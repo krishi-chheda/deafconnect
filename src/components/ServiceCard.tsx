@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -16,7 +17,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ imageSrc, imageAlt, title, description, href, isUrgent = false }: ServiceCardProps) {
   return (
-    <a 
+    <Link 
       href={href}
       className={`group relative flex flex-col justify-between rounded-[24px] border border-brand-navy/10 bg-white p-6 transition-all duration-300 hover:border-brand-teal/30 hover:shadow-lg focus:outline-none h-full ${
         isUrgent ? 'ring-2 ring-brand-coral/20 hover:ring-brand-coral/40' : ''
@@ -63,7 +64,7 @@ export function ServiceCard({ imageSrc, imageAlt, title, description, href, isUr
           <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -74,7 +75,7 @@ export default function ServicesGrid() {
       imageSrc: "/illustrations/service_mental_health.png",
       imageAlt: "Minimalist line drawing of a person with a heart bubble, representing wellbeing counseling support",
       description: "Find counselling, psychology and wellbeing services tailored for Deaf Tasmanians.",
-      href: "#mental-health",
+      href: "/services/mental-health",
       isUrgent: false,
     },
     {
@@ -82,7 +83,7 @@ export default function ServicesGrid() {
       imageSrc: "/illustrations/service_talk.png",
       imageAlt: "Minimalist line drawing of two people talking with a conversation bubble, representing consultation options",
       description: "Get help understanding your options, discuss navigation details, or book an initial consultation.",
-      href: "#talk",
+      href: "/support/talk",
       isUrgent: false,
     },
     {
@@ -90,7 +91,7 @@ export default function ServicesGrid() {
       imageSrc: "/illustrations/service_urgent.png",
       imageAlt: "Minimalist line drawing of a hand holding a phone displaying a heart icon, representing crisis services",
       description: "Find accessible crisis assistance and immediate emergency communication support.",
-      href: "#urgent",
+      href: "/support/crisis",
       isUrgent: true,
     },
     {
@@ -98,7 +99,7 @@ export default function ServicesGrid() {
       imageSrc: "/illustrations/service_community.png",
       imageAlt: "Minimalist line drawing of three gesturing people, representing Deaf social communities",
       description: "Find local Deaf organisations, social meetups, peer support, and active community events.",
-      href: "#community",
+      href: "/community",
       isUrgent: false,
     }
   ];
