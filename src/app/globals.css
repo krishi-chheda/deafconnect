@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-navy: #17375E;
+  --color-brand-navy: #1C2544;
   --color-brand-teal: #4FB6C2;
-  --color-brand-coral: #F46B45;
+  --color-brand-coral: #FF6641;
+  --color-brand-coral-hover: #E04523;
   --color-brand-blue-light: #EAF6FC;
   --color-brand-peach-light: #FEF7F2;
   --color-brand-primary: var(--brand-primary);
+  --color-brand-footer-bg: #E9F0F2;
   
   --radius-dct: 20px;
   --radius-dct-lg: 24px;
@@ -14,8 +16,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #17375E;
-  --brand-primary: #17375E;
+  --foreground: #1C2544;
+  --brand-primary: #1C2544;
 }
 
 html {
@@ -34,7 +36,7 @@ body {
 
 /* Global focus styling for keyboard accessibility */
 *:focus-visible {
-  outline: 3px solid #F46B45; /* High contrast coral focus ring */
+  outline: 3px solid #FF6641; /* High contrast coral focus ring */
   outline-offset: 3px;
   border-radius: 4px;
 }

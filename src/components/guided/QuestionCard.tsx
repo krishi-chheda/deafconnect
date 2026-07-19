@@ -2,8 +2,6 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
 import { useAccessibility } from '@/context/AccessibilityContext';
 
 interface QuestionCardProps {
@@ -47,20 +45,20 @@ export default function QuestionCard({
       tabIndex={0}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      className={`group relative flex items-center gap-4 rounded-[20px] border-[2px] bg-white text-left cursor-pointer transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-coral/50 ${
-        isEasyRead ? 'p-6 sm:p-7' : 'p-5'
+      className={`group relative flex items-center gap-6 rounded-[24px] border-[2px] cursor-pointer transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-coral/40 ${
+        isEasyRead ? 'p-6 sm:p-8' : 'p-5'
       } ${
         isSelected 
-          ? 'border-brand-primary bg-brand-primary/[0.03] shadow-sm' 
-          : 'border-brand-navy/10 hover:border-brand-primary/40 hover:shadow-md'
+          ? 'border-brand-coral bg-brand-coral/[0.06] ring-1 ring-brand-coral shadow-md scale-[1.01]' 
+          : 'border-brand-navy/10 bg-white hover:border-brand-teal/30 hover:shadow-md'
       }`}
-      aria-label={`${title}: ${description}`}
+      aria-label={`${title}${isEasyRead && description ? `: ${description}` : ''}`}
     >
       
-      {/* Visual illustration (hidden in Auslan mode for less text/more icon layout, or kept minimal) */}
+      {/* Visual illustration (larger containers) */}
       {imageSrc && (
-        <div className={`relative shrink-0 rounded-xl bg-brand-blue-light/30 border border-brand-blue-light/20 flex items-center justify-center overflow-hidden ${
-          isEasyRead ? 'h-20 w-20' : 'h-16 w-16'
+        <div className={`relative shrink-0 rounded-xl bg-brand-blue-light/40 border border-brand-blue-light/30 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-102 ${
+          isEasyRead ? 'h-24 w-24' : 'h-20 w-20'
         }`}>
           <Image
             src={imageSrc}
@@ -71,44 +69,21 @@ export default function QuestionCard({
         </div>
       )}
 
-      {/* Main card details */}
-      <div className="flex-1 flex flex-col gap-1 pr-6">
-        <h3 className={`font-extrabold text-brand-navy leading-snug group-hover:text-brand-primary transition-colors ${
-          isEasyRead ? 'text-lg sm:text-xl' : 'text-[16px]'
+      {/* Card Details: title and description */}
+      <div className="flex-1 flex flex-col gap-1.5 pr-2">
+        <h3 className={`font-extrabold text-brand-navy leading-snug transition-colors ${
+          isSelected ? 'text-brand-coral' : 'group-hover:text-brand-teal'
+        } ${
+          isEasyRead ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg'
         }`}>
           {title}
         </h3>
         
-        {/* Render description if not empty */}
-        {description && (
-          <p className={`font-medium text-brand-navy/70 leading-relaxed ${
-            isEasyRead ? 'text-[15px]' : 'text-xs'
-          }`}>
+        {/* Render description ONLY when Easy Read mode is active (for less text cards) */}
+        {isEasyRead && description && (
+          <p className="font-semibold text-brand-navy/70 leading-relaxed text-sm sm:text-base">
             {description}
           </p>
-        )}
-      </div>
-
-      {/* Checkbox/Radio select bubble */}
-      <div className={`shrink-0 flex items-center justify-center border-2 transition-all ${
-        selectionType === 'single' ? 'rounded-full' : 'rounded-md'
-      } ${
-        isSelected 
-          ? 'border-brand-primary bg-brand-primary text-white scale-100' 
-          : 'border-brand-navy/20 bg-white scale-95 group-hover:border-brand-primary/50'
-      } ${
-        isEasyRead ? 'h-7 w-7' : 'h-5 w-5'
-      }`}
-      aria-hidden="true"
-      >
-        {isSelected && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <Check className={`${isEasyRead ? 'h-4 w-4' : 'h-3 w-3'} stroke-[3.5]`} />
-          </motion.div>
         )}
       </div>
 

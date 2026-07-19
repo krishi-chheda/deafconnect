@@ -57,7 +57,7 @@ export function ServiceCard({ imageSrc, imageAlt, title, description, href, isUr
       {/* Bottom Half: Orange/Coral Animated Arrow */}
       <div className="flex justify-center md:justify-start mt-6 pt-4 border-t border-brand-navy/5">
         <div 
-          className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-coral/20 bg-brand-coral/5 text-brand-coral transition-all duration-300 group-hover:bg-brand-coral group-hover:text-white"
+          className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-coral/20 bg-brand-coral/5 text-brand-coral transition-all duration-300 group-hover:bg-brand-coral-hover group-hover:text-white"
           aria-hidden="true"
         >
           <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -104,9 +104,9 @@ export default function ServicesGrid() {
   ];
 
   return (
-    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-10 md:py-16" id="support">
+    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="support">
       <div className="flex flex-col gap-4 mb-10 text-center md:text-left">
-        <h2 className="text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl">
+        <h2 className="text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
           Support tailored for your lifestyle
         </h2>
         <p className="text-[16px] font-semibold text-brand-teal max-w-[600px] leading-relaxed">
@@ -114,7 +114,7 @@ export default function ServicesGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {services.map((service, idx) => (
           <motion.div
             key={service.title}

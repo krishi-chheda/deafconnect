@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
 import { usePreferenceStore, TextSize, ContrastMode, MotionPreference, AccessibilityMode } from '@/store/preference-store';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export type { TextSize, ContrastMode, MotionPreference, AccessibilityMode };
 
@@ -31,10 +32,28 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   } = usePreferenceStore();
 
   const [mounted, setMounted] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const prevModeRef = useRef<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
+    if (prevModeRef.current && prevModeRef.current !== accessibilityMode) {
+      let modeText = "Plain Language";
+      if (accessibilityMode === 'auslan') modeText = "Auslan Mode";
+      if (accessibilityMode === 'easyRead') modeText = "Easy Read Mode";
+      
+      setToastMessage(`${modeText} is now active`);
+      const timer = setTimeout(() => setToastMessage(null), 3000);
+      return () => clearTimeout(timer);
+    }
+    
+    prevModeRef.current = accessibilityMode;
+  }, [accessibilityMode, mounted]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -94,6 +113,30 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       {children}
+
+      {/* Dynamic format selection toast notification */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl border border-brand-teal/20 bg-white/95 p-4 shadow-xl backdrop-blur-md text-brand-navy max-w-[340px]"
+            role="alert"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-teal/15 text-brand-teal">
+              {accessibilityMode === 'auslan' && <span className="text-lg">🤟</span>}
+              {accessibilityMode === 'easyRead' && <span className="text-lg">📖</span>}
+              {accessibilityMode === 'plainLanguage' && <span className="text-lg">📝</span>}
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className="text-xs font-extrabold tracking-tight">{toastMessage}</span>
+              <span className="text-[10px] font-semibold text-brand-navy/55 mt-0.5">Interface updated successfully.</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AccessibilityContext.Provider>
   );
 };

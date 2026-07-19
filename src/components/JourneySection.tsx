@@ -17,7 +17,7 @@ export default function JourneySection() {
   };
 
   return (
-    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-10 md:py-16">
+    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12">
       
       {/* Guided Pathway Card */}
       <div className="rounded-[24px] border-[2px] border-brand-coral/20 bg-brand-peach-light/40 p-8 md:p-12 shadow-sm mb-16 relative overflow-hidden">
@@ -40,8 +40,8 @@ export default function JourneySection() {
           <div className="flex flex-col gap-3 shrink-0 w-full sm:w-auto">
             
             <Link
-              href="/guided-support"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral/95 px-8 py-4 text-base font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
+              href="/support"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover px-8 py-4 text-base font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
               aria-label="Help me find support quiz. Takes 1 to 2 minutes."
             >
               <span>Help me find support</span>

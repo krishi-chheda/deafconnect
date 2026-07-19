@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, VolumeX, Volume2, Eye } from 'lucide-react';
+import { Play, Pause, VolumeX, Volume2, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface InterpreterVideoProps {
@@ -14,7 +14,7 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Synchronized caption mapping for the interpreter video based on stepKey
+  // Dynamic captions based on stepKey
   const getCaptionsText = (key: string) => {
     switch (key) {
       case 'step1':
@@ -43,46 +43,72 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
 
   return (
     <div className="w-full max-w-[340px] mx-auto lg:mx-0 shrink-0 flex flex-col gap-3">
-      {/* Video Container Frame */}
+      
+      {/* Video Webcam Frame Container */}
       <div className="relative aspect-square w-full rounded-[24px] border-2 border-brand-teal/30 bg-slate-900 overflow-hidden shadow-md flex flex-col justify-between">
         
-        {/* Animated interpreter visualizer representation */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Camera Corner Focus Frame Overlays [ ] */}
+        <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-lg" aria-hidden="true">
+          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-white/30" />
+          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-white/30" />
+          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-white/30" />
+          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-white/30" />
+        </div>
+
+        {/* Live-style central screen */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           {isPlaying ? (
-            <div className="flex flex-col items-center gap-3.5 text-center px-4">
-              <div className="flex gap-2 items-end h-10">
-                <span className="w-3 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '0.1s', height: '60%' }} />
-                <span className="w-3 bg-brand-coral rounded-full animate-bounce" style={{ animationDelay: '0.3s', height: '100%' }} />
-                <span className="w-3 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '0.2s', height: '40%' }} />
-                <span className="w-3 bg-brand-coral rounded-full animate-bounce" style={{ animationDelay: '0.4s', height: '80%' }} />
-              </div>
-              <span className="text-xs font-extrabold text-brand-teal uppercase tracking-widest animate-pulse">
-                Auslan Interpreter Signing
+            <div className="flex flex-col items-center gap-2">
+              <Video className="h-10 w-10 text-brand-teal/50 animate-pulse" />
+              <span className="text-[10px] font-extrabold text-white/55 uppercase tracking-widest">
+                Camera Feed Active
               </span>
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-xs font-semibold text-white/50">Interpreter Paused</span>
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-xs font-bold text-white/50">Video Paused</span>
             </div>
           )}
         </div>
 
-        {/* Header Indicator */}
-        <div className="p-3 z-10 flex justify-between items-center bg-gradient-to-b from-black/70 to-transparent text-white">
-          <span className="text-[10px] font-extrabold tracking-wider uppercase text-brand-teal">Live Sign Interpreter</span>
-          <span className="text-[10px] font-bold text-white/70">TAS-A1</span>
+        {/* Header Overlay Controls (LIVE Status badge) */}
+        <div className="p-3.5 z-10 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent text-white">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute" />
+            <span className="text-[10px] font-extrabold tracking-widest uppercase text-emerald-400">
+              ● LIVE RELAY
+            </span>
+          </div>
+          <span className="text-[10px] font-extrabold text-white/60 tracking-wider">TAS-A1 REGISTRY</span>
         </div>
 
-        {/* Video progress indicator bar */}
-        <div className="w-full h-1 bg-white/15 relative mt-auto">
-          <div 
-            className="h-full bg-brand-teal transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        {/* Dynamic Running Waveform Visualizer (subtle, thinner, less distracting) */}
+        {isPlaying && (
+          <div className="absolute bottom-16 left-4 right-4 z-10 flex items-end justify-center gap-1 h-7 bg-black/25 border border-white/5 rounded-lg p-2.5 backdrop-blur-[1px]">
+            {Array.from({ length: 22 }).map((_, index) => {
+              const delay = (index % 5) * 0.12;
+              return (
+                <motion.div
+                  key={index}
+                  animate={{ height: ["15%", "55%", "15%"] }}
+                  transition={{
+                    duration: 0.9,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    delay: delay,
+                    ease: "easeInOut"
+                  }}
+                  className="w-[2px] rounded-full bg-brand-teal/45"
+                  style={{ height: '25%' }}
+                />
+              );
+            })}
+          </div>
+        )}
 
-        {/* Controls Overlay bar */}
-        <div className="p-3.5 z-10 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-white">
+        {/* Bottom controls overlay */}
+        <div className="p-3.5 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between text-white mt-auto">
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
@@ -99,19 +125,21 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
               {isMuted ? <VolumeX className="h-4.5 w-4.5" /> : <Volume2 className="h-4.5 w-4.5" />}
             </button>
           </div>
-          <span className="text-[10px] font-extrabold text-white/60 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">
-            Auslan Active
+
+          <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-teal">
+            Auslan Interpreter
           </span>
         </div>
 
       </div>
 
-      {/* Closed Captions Overlay below the video screen */}
-      <div className="bg-brand-blue-light/40 border border-brand-teal/20 rounded-xl p-3.5 shadow-sm text-center">
-        <p className="text-xs font-bold leading-normal text-brand-navy tracking-wide">
+      {/* Captions Text Panel */}
+      <div className="rounded-[20px] bg-brand-blue-light/35 border border-brand-teal/20 p-4 shadow-sm">
+        <p className="text-xs font-semibold text-brand-navy/80 leading-relaxed">
           {getCaptionsText(stepKey)}
         </p>
       </div>
+
     </div>
   );
 }

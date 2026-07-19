@@ -37,7 +37,6 @@ export default function Navbar() {
     { name: 'Find Support', href: '/support' },
     { name: 'Services', href: '/services' },
     { name: 'Community', href: '/community' },
-    { name: 'Toolkit', href: '/toolkit' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

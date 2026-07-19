@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Volume2, VolumeX, Eye, BookOpen, HelpCircle, X, Check } from 'lucide-react';
-import { useAccessibility, AccessibilityMode } from '@/context/AccessibilityContext';
+import { Play, Pause, Volume2, VolumeX, Check } from 'lucide-react';
+import { useAccessibility } from '@/context/AccessibilityContext';
 import AccessibilitySelector, { AccessOption } from './AccessibilitySelector';
-import * as Dialog from '@radix-ui/react-dialog';
 
 export default function Hero() {
   const { accessibilityMode, setAccessibilityMode } = useAccessibility();
@@ -20,20 +19,24 @@ export default function Hero() {
     if (mode === 'plain') setAccessibilityMode('plainLanguage');
   };
 
-  const [captionsEnabled, setCaptionsEnabled] = useState(true);
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  // Video playback states
+  const [isInlineVideoActive, setIsInlineVideoActive] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [captionsEnabled, setCaptionsEnabled] = useState(true);
+  const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
 
   // Simulated video playback timer
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (isPlaying && isVideoOpen) {
+    if (isPlaying && isInlineVideoActive) {
       interval = setInterval(() => {
         setVideoProgress((prev) => {
           if (prev >= 100) {
             setIsPlaying(false);
+            setIsInlineVideoActive(false); // Restore illustration
+            setHasPlayedOnce(true);
             return 0; // reset
           }
           return prev + 1.5;
@@ -41,7 +44,7 @@ export default function Hero() {
       }, 200);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, isVideoOpen]);
+  }, [isPlaying, isInlineVideoActive]);
 
   // Captions timeline mapping based on progress percent
   const getCaptionsText = (progress: number) => {
@@ -69,10 +72,20 @@ export default function Hero() {
     }
   };
 
+  const handlePlayWelcomeClick = () => {
+    if (isInlineVideoActive) {
+      setIsPlaying(!isPlaying);
+    } else {
+      setIsInlineVideoActive(true);
+      setIsPlaying(true);
+      setVideoProgress(0);
+    }
+  };
+
   return (
-    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-8 md:py-12" id="main-content">
+    <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="main-content">
       {/* Large rounded hero container */}
-      <div className="relative overflow-hidden rounded-[24px] bg-brand-blue-light/50 border border-brand-blue-light/35 px-8 py-10 md:py-16 md:px-16">
+      <div className="relative overflow-hidden rounded-[24px] bg-brand-blue-light/50 border border-brand-blue-light/35 px-8 py-12 md:py-16 md:px-16">
         
         {/* Decorative background blur shapes */}
         <div className="absolute -top-24 -left-24 h-48 w-48 rounded-full bg-brand-teal/10 blur-3xl" />
@@ -116,189 +129,167 @@ export default function Hero() {
             />
           </div>
 
-          {/* Right Column: Illustration + Buttons */}
+          {/* Right Column: Illustration OR Inline Video Player */}
           <div className="lg:col-span-5 flex flex-col items-center gap-6 justify-center">
             
-            {/* y-axis floating illustration */}
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut"
-              }}
-              className="relative w-full max-w-[400px] aspect-[4/3] rounded-2xl bg-white/60 backdrop-blur-sm border border-white/80 p-6 shadow-sm flex items-center justify-center"
-            >
-              <Image
-                src="/illustrations/hero_signing.png"
-                alt="Illustration of four diverse Deaf people communicating happily using Auslan sign language"
-                fill
-                priority
-                className="object-contain p-4"
-              />
-            </motion.div>
+            {isInlineVideoActive ? (
+              /* Inline video player container matching the illustration aspect-ratio */
+              <div 
+                className="relative w-full max-w-[400px] aspect-[4/3] rounded-[24px] bg-slate-950 border-2 border-brand-teal/30 overflow-hidden flex flex-col justify-between shadow-lg"
+                role="region"
+                aria-label="Auslan Welcome Video Player"
+              >
+                {/* Camera Focus Ticks [ ] */}
+                <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-lg" aria-hidden="true">
+                  <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-white/20" />
+                  <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-white/20" />
+                  <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-white/20" />
+                  <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-white/20" />
+                </div>
+
+                {/* Simulated webcam stream */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  {isPlaying ? (
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="flex gap-1.5 items-end h-8">
+                        <span className="w-2 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '0.1s', height: '60%' }} />
+                        <span className="w-2 bg-brand-coral rounded-full animate-bounce" style={{ animationDelay: '0.3s', height: '95%' }} />
+                        <span className="w-2 bg-brand-teal rounded-full animate-bounce" style={{ animationDelay: '0.2s', height: '40%' }} />
+                        <span className="w-2 bg-brand-coral rounded-full animate-bounce" style={{ animationDelay: '0.5s', height: '70%' }} />
+                      </div>
+                      <span className="text-[10px] font-extrabold text-brand-teal uppercase tracking-widest animate-pulse">
+                        Auslan Signer signing
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center gap-1 text-white/50 text-xs font-semibold">
+                      <span>Video Paused</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Top overlay panel */}
+                <div className="p-3.5 z-10 flex justify-between items-center bg-gradient-to-b from-black/85 to-transparent text-white text-[9px] font-extrabold">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute" />
+                    <span className="text-emerald-400">● LIVE TRANSLATION</span>
+                  </div>
+                  <span className="text-white/60">TAS-A1 WELCOME</span>
+                </div>
+
+                {/* Caption overlay */}
+                {captionsEnabled && (
+                  <div className="mx-4 mb-16 z-10 px-3.5 py-2.5 rounded-xl bg-black/85 border border-white/5 text-center">
+                    <p className="text-[13px] font-bold text-white leading-normal leading-snug">
+                      {getCaptionsText(videoProgress) || "..."}
+                    </p>
+                  </div>
+                )}
+
+                {/* Bottom Timeline tracker progress bar */}
+                <div className="w-full h-1 bg-white/20 relative mt-auto cursor-pointer" onClick={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const clickX = e.clientX - rect.left;
+                  const percent = (clickX / rect.width) * 100;
+                  setVideoProgress(percent);
+                }}>
+                  <div 
+                    className="h-full bg-brand-coral transition-all duration-100" 
+                    style={{ width: `${videoProgress}%` }}
+                  />
+                </div>
+
+                {/* Inline controls matching designer systems */}
+                <div className="p-3.5 z-10 bg-gradient-to-t from-black/90 to-transparent flex items-center justify-between text-white text-xs">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setIsPlaying(!isPlaying)}
+                      className="p-1 hover:bg-white/10 rounded transition-colors focus:outline-none cursor-pointer"
+                      aria-label={isPlaying ? "Pause video" : "Play video"}
+                    >
+                      {isPlaying ? (
+                        <Pause className="h-4.5 w-4.5 fill-current" />
+                      ) : (
+                        <Play className="h-4.5 w-4.5 fill-current" />
+                      )}
+                    </button>
+                    <button
+                      onClick={() => setIsMuted(!isMuted)}
+                      className="p-1 hover:bg-white/10 rounded transition-colors focus:outline-none cursor-pointer"
+                      aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+                    >
+                      {isMuted ? <VolumeX className="h-4.5 w-4.5" /> : <Volume2 className="h-4.5 w-4.5" />}
+                    </button>
+                    <span className="text-[10px] font-semibold tabular-nums text-white/80">
+                      {Math.floor(videoProgress / 10)}s / 10s
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-[9px] font-bold text-white/50 bg-white/10 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                      Captions Ready
+                    </span>
+                    <button
+                      onClick={() => setCaptionsEnabled(!captionsEnabled)}
+                      className={`px-2.5 py-0.5 text-[9px] font-extrabold rounded border transition-all cursor-pointer focus:outline-none ${
+                        captionsEnabled ? 'bg-brand-teal border-brand-teal text-white' : 'border-white/30 text-white/70 hover:border-white hover:text-white'
+                      }`}
+                      aria-label={captionsEnabled ? "Disable captions" : "Enable captions"}
+                    >
+                      CC
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            ) : (
+              /* Floating transparent-background illustration */
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut"
+                }}
+                className="relative w-full max-w-[400px] aspect-[4/3] flex items-center justify-center animate-in fade-in"
+              >
+                <Image
+                  src="/illustrations/hero_signing.png"
+                  alt="Illustration of four diverse Deaf people communicating happily using Auslan sign language"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </motion.div>
+            )}
 
             {/* Media Controls Row */}
             <div className="flex flex-wrap items-center justify-center gap-3 w-full max-w-[400px]">
               
-              {/* Play Auslan Welcome Dialog Trigger */}
-              <Dialog.Root open={isVideoOpen} onOpenChange={(open) => {
-                setIsVideoOpen(open);
-                if (open) {
-                  setIsPlaying(true);
-                  setVideoProgress(0);
-                } else {
-                  setIsPlaying(false);
-                }
-              }}>
-                <Dialog.Trigger asChild>
-                  <button 
-                    className="flex-1 flex items-center justify-center gap-2 rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 px-6 py-3.5 text-[15px] font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
-                    aria-label="Play Auslan Welcome Video"
-                  >
+              {/* Play Auslan Welcome Inline Button CTA */}
+              <button 
+                onClick={handlePlayWelcomeClick}
+                className="flex-1 h-12 flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover px-6 text-[15px] font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
+                aria-label={isInlineVideoActive ? (isPlaying ? "Pause Welcome Video" : "Resume Welcome Video") : (hasPlayedOnce ? "Replay Welcome Video" : "Play Auslan Welcome")}
+              >
+                {isInlineVideoActive && isPlaying ? (
+                  <>
+                    <Pause className="h-5 w-5 fill-current" />
+                    <span>Pause Welcome</span>
+                  </>
+                ) : (
+                  <>
                     <Play className="h-5 w-5 fill-current" />
-                    <span>Play Auslan Welcome</span>
-                  </button>
-                </Dialog.Trigger>
-
-                <Dialog.Portal>
-                  {/* Modal Backdrop */}
-                  <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-navy/60 backdrop-blur-sm animate-in fade-in" />
-                  
-                  {/* Modal Content */}
-                  <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-[24px] border border-brand-navy/10 bg-white p-6 shadow-2xl animate-in zoom-in-95 duration-200 focus:outline-none">
-                    
-                    {/* Header */}
-                    <div className="flex items-center justify-between pb-4 border-b border-brand-navy/10 mb-4">
-                      <Dialog.Title className="text-xl font-bold text-brand-navy flex items-center gap-2">
-                        <span>Auslan Welcome Video</span>
-                        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-teal/10 text-brand-teal uppercase tracking-wider">Interpreter view</span>
-                      </Dialog.Title>
-                      
-                      <Dialog.Close asChild>
-                        <button 
-                          className="rounded-full p-2 text-brand-navy/60 hover:text-brand-navy hover:bg-brand-blue-light/60 transition-colors cursor-pointer focus:outline-none"
-                          aria-label="Close video player"
-                        >
-                          <X className="h-5 w-5" />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-
-                    {/* Simulated Video Screen */}
-                    <div className="relative aspect-video w-full rounded-2xl bg-slate-900 overflow-hidden flex flex-col justify-between border-2 border-brand-navy/5 shadow-inner">
-                      
-                      {/* Video graphic layout */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        {isPlaying ? (
-                          <div className="flex flex-col items-center gap-4 text-center px-6">
-                            {/* Animated signing graphics representation */}
-                            <div className="flex gap-1.5 items-end h-8">
-                              <span className="w-2.5 bg-brand-teal/80 rounded-full animate-bounce" style={{ animationDelay: '0.1s', height: '60%' }} />
-                              <span className="w-2.5 bg-brand-coral/80 rounded-full animate-bounce" style={{ animationDelay: '0.3s', height: '90%' }} />
-                              <span className="w-2.5 bg-brand-teal/80 rounded-full animate-bounce" style={{ animationDelay: '0.2s', height: '40%' }} />
-                              <span className="w-2.5 bg-brand-coral/80 rounded-full animate-bounce" style={{ animationDelay: '0.5s', height: '75%' }} />
-                            </div>
-                            <span className="text-sm font-semibold tracking-wide text-white/70">Auslan Interpreter is signing...</span>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col items-center gap-2">
-                            <span className="text-sm font-semibold text-white/60">Video ended. Click replay to watch again.</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Top Overlay Controls (Interpreter info) */}
-                      <div className="p-3 z-10 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
-                        <span className="text-xs font-bold text-white tracking-wide">Deaf Connect Tasmania</span>
-                      </div>
-
-                      {/* Closed Captions Overlay (Synchronized with timeline) */}
-                      {captionsEnabled && (
-                        <div className="mx-6 mb-16 z-10 px-4 py-2 rounded-xl bg-black/75 border border-white/10 text-center">
-                          <p className="text-[15px] sm:text-[17px] font-bold text-white leading-normal tracking-wide">
-                            {getCaptionsText(videoProgress) || "..."}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Bottom Controls Bar */}
-                      <div className="p-4 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col gap-2.5">
-                        
-                        {/* Interactive timeline slider */}
-                        <div className="relative w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-pointer" onClick={(e) => {
-                          const rect = e.currentTarget.getBoundingClientRect();
-                          const clickX = e.clientX - rect.left;
-                          const percent = (clickX / rect.width) * 100;
-                          setVideoProgress(percent);
-                        }}>
-                          <div 
-                            className="h-full bg-brand-coral rounded-full transition-all duration-100" 
-                            style={{ width: `${videoProgress}%` }}
-                          />
-                        </div>
-
-                        {/* Control buttons */}
-                        <div className="flex items-center justify-between text-white">
-                          <div className="flex items-center gap-3">
-                            <button
-                              onClick={() => setIsPlaying(!isPlaying)}
-                              className="p-1.5 hover:bg-white/10 rounded-lg transition-colors cursor-pointer focus:outline-none"
-                              aria-label={isPlaying ? "Pause video" : "Play video"}
-                            >
-                              {isPlaying ? (
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
-                              ) : (
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                              )}
-                            </button>
-
-                            <button
-                              onClick={() => setIsMuted(!isMuted)}
-                              className="p-1.5 hover:bg-white/10 rounded-lg transition-colors cursor-pointer focus:outline-none"
-                              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                            >
-                              {isMuted ? <VolumeX className="h-[18px] w-[18px]" /> : <Volume2 className="h-[18px] w-[18px]" />}
-                            </button>
-
-                            <span className="text-xs font-semibold tabular-nums text-white/80">
-                              {Math.floor(videoProgress / 10)}s / 10s
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => setCaptionsEnabled(!captionsEnabled)}
-                              className={`px-2.5 py-1 text-xs font-extrabold rounded border transition-all cursor-pointer focus:outline-none ${
-                                captionsEnabled 
-                                  ? 'bg-brand-coral border-brand-coral text-white' 
-                                  : 'border-white/30 text-white/70 hover:border-white hover:text-white'
-                              }`}
-                              aria-label={captionsEnabled ? "Disable Captions" : "Enable Captions"}
-                            >
-                              CC
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Dialog Description & Info */}
-                    <div className="mt-4 bg-brand-blue-light/30 rounded-xl p-3.5 border border-brand-blue-light/50 flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-brand-teal mt-1.5 shrink-0" />
-                      <p className="text-xs font-semibold text-brand-navy/80 leading-relaxed">
-                        This welcome video uses Tasmanian-localized Auslan signs, accompanied by clear captions and normal voiceovers. Click CC to toggle subtitles.
-                      </p>
-                    </div>
-
-                  </Dialog.Content>
-                </Dialog.Portal>
-              </Dialog.Root>
+                    <span>{hasPlayedOnce ? "Replay Welcome Video" : "Play Auslan Welcome"}</span>
+                  </>
+                )}
+              </button>
 
               {/* Toggle Captions button */}
               <button 
                 onClick={() => setCaptionsEnabled(!captionsEnabled)}
-                className={`flex-1 flex items-center justify-center gap-2 rounded-full border-[2px] px-6 py-3.5 text-[15px] font-bold cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98] ${
+                className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-full border-[2px] px-6 text-[15px] font-bold cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98] ${
                   captionsEnabled 
                     ? 'border-brand-teal bg-white text-brand-teal shadow-sm' 
                     : 'border-brand-navy/10 bg-white text-brand-navy/60 hover:border-brand-navy/30'
