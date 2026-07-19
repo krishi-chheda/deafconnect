@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #17375E;
+  --color-brand-teal: #4FB6C2;
+  --color-brand-coral: #F46B45;
+  --color-brand-blue-light: #EAF6FC;
+  --color-brand-peach-light: #FEF7F2;
+  --color-brand-primary: var(--brand-primary);
+  
+  --radius-dct: 20px;
+  --radius-dct-lg: 24px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #17375E;
+  --brand-primary: #17375E;
+}
+
+html {
+  font-size: calc(100% * var(--text-scale, 1));
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Global focus styling for keyboard accessibility */
+*:focus-visible {
+  outline: 3px solid #F46B45; /* High contrast coral focus ring */
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Dynamic theme overrides based on accessibilityMode */
+html.auslan-mode {
+  --brand-primary: #4FB6C2; /* Primary brand color becomes Teal in Auslan Mode */
+}
+
+/* Simplify layout & boost visual readability details for Easy Read Mode */
+html.easy-read-mode body {
+  line-height: 1.85 !important;
+  letter-spacing: 0.015em;
+}
+
+/* Expand touch elements slightly for Easy Read Mode */
+html.easy-read-mode button,
+html.easy-read-mode a {
+  min-height: 48px;
+}
+
+/* High Contrast mode theme overrides */
+html.high-contrast {
+  --background: #ffffff;
+  --foreground: #000000;
+  
+  --brand-primary: #000000;
+  --color-brand-navy: #000000;
+  --color-brand-teal: #004B57; /* Darker, high contrast teal */
+  --color-brand-coral: #B83500; /* Darker, high contrast coral */
+  --color-brand-blue-light: #F0F6F9; /* Very faint tint, nearly white */
+  --color-brand-peach-light: #FCF5F1;
+}
+
+html.high-contrast.auslan-mode {
+  --brand-primary: #004B57; /* High contrast + Auslan primary becomes readable dark Teal */
+}
+
+html.high-contrast *:focus-visible {
+  outline: 4px solid #000000;
+  outline-offset: 4px;
+}
+
+/* Disable animations and transitions for reduced motion preference */
+html.reduced-motion *,
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] ::before,
+[data-reduced-motion="true"] ::after {
+  animation-delay: -1ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  background-attachment: initial !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
