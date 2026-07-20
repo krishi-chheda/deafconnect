@@ -30,10 +30,10 @@ export default function AboutPage() {
           <div className="flex flex-col gap-1.5 text-primaryText">
             <h2 className="font-extrabold text-[16px] uppercase tracking-wide text-brand-coral">Educational Prototype Disclaimer</h2>
             <p className="text-xs font-semibold leading-relaxed">
-              This website is an educational prototype developed for the **Monash Innovation Guarantee (MIG)** in collaboration with the **Mental Health Council of Tasmania (MHCT)**. 
+              This website is an educational prototype developed for the <strong>Monash Innovation Guarantee (MIG)</strong> in collaboration with the <strong>Mental Health Council of Tasmania (MHCT)</strong>. 
             </p>
             <p className="text-xs font-semibold leading-relaxed">
-              It is **NOT** an official government website or a live medical service registry. All content, recommendations, and simulated interpreters are designed solely for classroom presentation, testing, and portfolio demonstration.
+              It is <strong>NOT</strong> an official government website or a live medical service registry. All content, recommendations, and simulated interpreters are designed solely for classroom presentation, testing, and portfolio demonstration.
             </p>
           </div>
         </div>
@@ -61,9 +61,9 @@ export default function AboutPage() {
           <div className="flex flex-col gap-3">
             <h3 className="text-xl font-extrabold text-primaryText tracking-tight">Partners and Mentors</h3>
             <ul className="list-disc pl-5 flex flex-col gap-1 text-sm font-semibold">
-              <li>**Monash University** (Student developer & designers)</li>
-              <li>**Mental Health Council of Tasmania** (Mentorship & domain guidance)</li>
-              <li>**Tasmanian Deaf Community Advocates** (Layout feedback)</li>
+              <li><strong>Monash University</strong> (Student developer & designers)</li>
+              <li><strong>Mental Health Council of Tasmania</strong> (Mentorship & domain guidance)</li>
+              <li><strong>Tasmanian Deaf Community Advocates</strong> (Layout feedback)</li>
             </ul>
           </div>
 

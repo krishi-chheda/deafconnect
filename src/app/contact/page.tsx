@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { Mail, Phone, Globe, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useAccessibility } from "@/context/AccessibilityContext";
 import AnimatePage from "@/components/guided/AnimatePage";
+import Button from "@/components/ui/Button";
 
 // Form validation schema
 const contactSchema = z.object({
@@ -153,13 +154,16 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    <button 
+                    <Button 
                       type="submit"
-                      className="w-full mt-2 flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover py-3.5 text-sm font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
+                      variant="primary"
+                      size="md"
+                      fullWidth
+                      className="mt-2"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send Message</span>
-                    </button>
+                    </Button>
                   </form>
                 )}
               </div>

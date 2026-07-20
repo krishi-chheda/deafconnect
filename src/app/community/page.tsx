@@ -371,21 +371,21 @@ export default function CommunityPage() {
 
               <div className="flex flex-wrap gap-4 justify-center w-full text-xs font-extrabold text-brand-navy/80">
                 <a 
-                  href="https://www.tasdeaf.org.au"
+                  href="https://deafaustralia.org.au"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-11 px-5 rounded-full bg-white border border-brand-navy/10 hover:border-brand-teal flex items-center gap-1.5 transition-all shadow-sm"
                 >
-                  <span>Deaf Tasmania Association</span>
+                  <span>Deaf Australia Community</span>
                   <span className="text-brand-teal text-xs">→</span>
                 </a>
                 <a 
-                  href="https://www.deafsportstas.org.au"
+                  href="https://deafsports.org.au"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-11 px-5 rounded-full bg-white border border-brand-navy/10 hover:border-brand-teal flex items-center gap-1.5 transition-all shadow-sm"
                 >
-                  <span>Deaf Sports Tasmania</span>
+                  <span>Deaf Sports Australia</span>
                   <span className="text-brand-teal text-xs">→</span>
                 </a>
               </div>

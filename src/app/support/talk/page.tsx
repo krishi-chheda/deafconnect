@@ -36,7 +36,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
     {
       name: "National Relay Service (NRS) Video Relay",
       channel: "Auslan Video Relay",
-      url: "https://www.accesshub.gov.au/about-the-nrs/video-relay-service",
+      url: "https://www.accesshub.gov.au/about-the-nrs",
       desc: "Connects you with an Auslan interpreter online who speaks to the receiver on your behalf."
     },
     {
@@ -44,20 +44,21 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
       channel: "Auslan Interpreting",
       phone: "1300 773 777",
       email: "interpreting@deafconnect.org.au",
+      url: "https://deafconnect.org.au",
       desc: "Book physical or video Auslan interpreters for appointments and consultations."
     }
   ],
   chat: [
     {
-      name: "Tas Deaf Web Chat Network",
-      channel: "Live Chat Support",
-      url: "https://www.deafconnecttas.org/chat",
-      desc: "Local, peer-supported live chat counseling service available Monday to Friday."
+      name: "Deaf Connect Support Services",
+      channel: "Live Chat & Contact",
+      url: "https://deafconnect.org.au",
+      desc: "Local, peer-supported counseling and contact services for Deaf Tasmanians."
     },
     {
       name: "Lifeline WebChat Service",
       channel: "Crisis Chat",
-      url: "https://www.lifeline.org.au/crisis-chat/",
+      url: "https://www.lifeline.org.au/chat",
       desc: "Statewide and national crisis support chat available 24/7."
     }
   ],

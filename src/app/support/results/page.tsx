@@ -15,6 +15,7 @@ import { auslanData } from '@/data/auslan';
 import RecommendationCard from "@/components/guided/RecommendationCard";
 import AnimatePage from "@/components/guided/AnimatePage";
 import EmergencyBanner from "@/components/ui/EmergencyBanner";
+import Button from "@/components/ui/Button";
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -209,12 +210,14 @@ export default function ResultsPage() {
                     : "We will contact you using your preferred written method (SMS or Email) shortly."}
                 </p>
                 
-                <button
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={() => setIsBookModalOpen(false)}
-                  className="mt-4 rounded-full bg-brand-primary text-white hover:opacity-90 px-6 py-2.5 text-xs font-bold shadow-sm focus:outline-none cursor-pointer"
+                  className="mt-4"
                 >
                   Close Window
-                </button>
+                </Button>
               </motion.div>
             ) : (
               <form onSubmit={handleBookingSubmit} className="flex flex-col gap-4">
@@ -231,7 +234,7 @@ export default function ResultsPage() {
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="e.g. Robin"
-                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal"
                   />
                 </div>
 
@@ -246,7 +249,7 @@ export default function ResultsPage() {
                     value={clientContact}
                     onChange={(e) => setClientContact(e.target.value)}
                     placeholder={commMethods.includes('auslan') ? "e.g. FaceTime id or link" : "e.g. 0400 000 000 or email"}
-                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal"
                   />
                 </div>
 
@@ -261,18 +264,21 @@ export default function ResultsPage() {
                     value={clientTime}
                     onChange={(e) => setClientTime(e.target.value)}
                     placeholder="e.g. Tomorrow morning around 10am"
-                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal"
                   />
                 </div>
 
                 {/* Submit button */}
-                <button
+                <Button
                   type="submit"
-                  className="w-full mt-4 flex items-center justify-center gap-2 rounded-full bg-brand-primary text-white hover:opacity-90 py-3.5 text-sm font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
+                  variant="primary"
+                  size="md"
+                  fullWidth
+                  className="mt-4"
                 >
                   <Send className="h-4 w-4" />
                   <span>Send Request</span>
-                </button>
+                </Button>
 
               </form>
             )}

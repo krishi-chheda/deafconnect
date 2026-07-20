@@ -97,7 +97,7 @@ export default function ServicesGrid() {
       imageSrc: "/illustrations/service_talk.png",
       imageAlt: "Minimalist line drawing of two people talking with a conversation bubble, representing consultation options",
       description: "Get help understanding your options, discuss navigation details, or book an initial consultation.",
-      href: "/support/talk",
+      href: "/support",
       isUrgent: false,
     },
     {

@@ -66,6 +66,7 @@ export default function CrisisSupportPage() {
       desc: "For general distress, self-harm concerns, or suicide prevention counselling.",
       phone: "13 11 14",
       sms: "0477 13 11 14",
+      url: "https://www.lifeline.org.au",
       nrsText: "Call 13 11 14 via NRS",
       type: "primary"
     },
@@ -73,6 +74,7 @@ export default function CrisisSupportPage() {
       name: "Suicide Call Back Service",
       desc: "Free nationwide video or phone counseling for people affected by suicide.",
       phone: "1300 659 467",
+      url: "https://www.suicidecallbackservice.org.au",
       nrsText: "Call 1300 659 467 via NRS",
       type: "secondary"
     },
@@ -80,7 +82,7 @@ export default function CrisisSupportPage() {
       name: "National Relay Service (Emergency Only)",
       desc: "NRS Text-to-Speech and Video translation for dialling 000.",
       phone: "1800 555 727",
-      url: "https://www.accesshub.gov.au/about-the-nrs/nrs-service-features",
+      url: "https://www.accesshub.gov.au/about-the-nrs",
       type: "secondary"
     }
   ];
@@ -136,7 +138,7 @@ export default function CrisisSupportPage() {
               <Button
                 variant="teal"
                 size="md"
-                href="https://www.accesshub.gov.au/nrs-phone-numbers"
+                href="https://www.accesshub.gov.au/about-the-nrs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0"
