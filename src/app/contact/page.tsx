@@ -5,8 +5,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Mail, Phone, Globe, Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { useAccessibility } from "@/context/AccessibilityContext";
 import AnimatePage from "@/components/guided/AnimatePage";
 
@@ -39,12 +37,8 @@ export default function ContactPage() {
   };
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="flex-1 w-full bg-white" id="main-content">
-        <AnimatePage>
-          <div className="mx-auto max-w-[1200px] px-6 sm:px-8 py-12 md:py-16">
+    <AnimatePage>
+      <div className="mx-auto max-w-[1200px] px-6 sm:px-8 py-12 md:py-16" id="main-content">
             
             {/* Header titles */}
             <div className="text-center md:text-left mb-10 border-b border-brand-navy/10 pb-6">
@@ -217,9 +211,5 @@ export default function ContactPage() {
 
           </div>
         </AnimatePage>
-      </main>
-
-      <Footer />
-    </>
   );
 }

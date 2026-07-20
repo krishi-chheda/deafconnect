@@ -7,8 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Phone, Mail, Video, MapPin, CheckCircle, ChevronRight, HelpCircle, FileText } from 'lucide-react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
@@ -142,12 +140,8 @@ export default function TalkToSomeonePage() {
   ];
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="flex-1 w-full bg-white animate-in" id="main-content">
-        <AnimatePage>
-          <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12">
+    <AnimatePage>
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="main-content">
             
             {/* Breadcrumbs */}
             <Breadcrumbs items={[
@@ -370,28 +364,24 @@ export default function TalkToSomeonePage() {
                                 Thank you. A Deaf Connect support officer will reach out to you using your preferred channel within 24 hours.
                               </p>
                             </div>
-                            <button
-                              onClick={() => setFormSubmitted(false)}
-                              className="mt-2 h-10 px-6 rounded-full border border-brand-navy/20 text-xs font-bold text-brand-navy hover:bg-white transition-colors"
-                            >
-                              Send Another Request
-                            </button>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                              <button
+                                onClick={() => setFormSubmitted(false)}
+                                className="mt-2 h-10 px-6 rounded-full border border-brand-navy/20 text-xs font-bold text-brand-navy hover:bg-white transition-colors"
+                              >
+                                Send Another Request
+                              </button>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
 
+                      </div>
                     </div>
-                  </div>
 
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-          </div>
-        </AnimatePage>
-      </main>
-
-      <Footer />
-    </>
+            </div>
+          </AnimatePage>
   );
 }

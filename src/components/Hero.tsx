@@ -56,22 +56,6 @@ export default function Hero() {
     return "";
   };
 
-  // Dynamic text content based on selected preference card
-  const content = {
-    auslan: {
-      headline: "How can we support you?",
-      subheading: "Find accessible mental health and community support for Deaf people in Tasmania.",
-    },
-    easyread: {
-      headline: "We are here to support you",
-      subheading: "We help Deaf people in Tasmania. We help with your mental health. We help you connect with other people.",
-    },
-    plain: {
-      headline: "Deaf Support Services Tasmania",
-      subheading: "Access professional mental health counseling, individual consultation, urgent crisis support, and community groups.",
-    }
-  };
-
   const handlePlayWelcomeClick = () => {
     if (isInlineVideoActive) {
       setIsPlaying(!isPlaying);
@@ -96,31 +80,13 @@ export default function Hero() {
           {/* Left Column */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <AnimatePresence mode="wait">
-                <motion.h1 
-                  key={accessMode + "-headline"}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-navy leading-[1.1]"
-                >
-                  {content[accessMode].headline}
-                </motion.h1>
-              </AnimatePresence>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-navy leading-[1.1]">
+                How can we support you?
+              </h1>
               
-              <AnimatePresence mode="wait">
-                <motion.p 
-                  key={accessMode + "-subheading"}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
-                  className="text-lg sm:text-xl font-medium text-brand-navy/70 leading-relaxed max-w-[580px]"
-                >
-                  {content[accessMode].subheading}
-                </motion.p>
-              </AnimatePresence>
+              <p className="text-lg sm:text-xl font-medium text-brand-navy/70 leading-relaxed max-w-[580px]">
+                Find accessible mental health and community support for Deaf people in Tasmania.
+              </p>
             </div>
 
             <AccessibilitySelector 

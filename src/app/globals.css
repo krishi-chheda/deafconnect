@@ -34,16 +34,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure default typography elements use #1C2544 primary text color */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button, input, textarea, select, label {
+  color: inherit;
+}
+
 /* Global focus styling for keyboard accessibility */
 *:focus-visible {
   outline: 3px solid #FF6641; /* High contrast coral focus ring */
   outline-offset: 3px;
   border-radius: 4px;
-}
-
-/* Dynamic theme overrides based on accessibilityMode */
-html.auslan-mode {
-  --brand-primary: #4FB6C2; /* Primary brand color becomes Teal in Auslan Mode */
 }
 
 /* Simplify layout & boost visual readability details for Easy Read Mode */

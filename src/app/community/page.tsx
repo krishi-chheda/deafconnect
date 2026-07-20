@@ -6,8 +6,6 @@ import { Calendar, MapPin, Clock, Languages, Search, Users, Gift, HelpCircle, Fi
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
@@ -119,12 +117,8 @@ export default function CommunityPage() {
   }, [searchQuery, selectedFilter]);
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="flex-1 w-full bg-white animate-in" id="main-content">
-        <AnimatePage>
-          <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12">
+    <AnimatePage>
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="main-content">
             
             {/* Breadcrumbs */}
             <Breadcrumbs items={[
@@ -399,9 +393,5 @@ export default function CommunityPage() {
 
           </div>
         </AnimatePage>
-      </main>
-
-      <Footer />
-    </>
   );
 }

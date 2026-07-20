@@ -4,8 +4,6 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, MapPin, Phone, HelpCircle, FileText, ChevronDown, Check, Info } from 'lucide-react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
@@ -155,12 +153,8 @@ export default function MentalHealthSupportPage() {
   ];
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="flex-1 w-full bg-white animate-in" id="main-content">
-        <AnimatePage>
-          <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12">
+    <AnimatePage>
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="main-content">
             
             {/* Breadcrumbs */}
             <Breadcrumbs items={[
@@ -552,9 +546,5 @@ export default function MentalHealthSupportPage() {
 
           </div>
         </AnimatePage>
-      </main>
-
-      <Footer />
-    </>
   );
 }

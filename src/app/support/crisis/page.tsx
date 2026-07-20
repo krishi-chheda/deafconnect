@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Phone, ArrowRight, MessageSquare, ShieldAlert, MapPin, Eye, ExternalLink } from 'lucide-react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
@@ -86,12 +84,8 @@ export default function CrisisSupportPage() {
   ];
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="flex-1 w-full bg-white animate-in" id="main-content">
-        <AnimatePage>
-          <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12">
+    <AnimatePage>
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="main-content">
             
             {/* Breadcrumbs */}
             <Breadcrumbs items={[
@@ -316,9 +310,5 @@ export default function CrisisSupportPage() {
 
           </div>
         </AnimatePage>
-      </main>
-
-      <Footer />
-    </>
   );
 }
