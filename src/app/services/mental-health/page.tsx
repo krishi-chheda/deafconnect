@@ -7,6 +7,7 @@ import { Search, MapPin, Phone, HelpCircle, FileText, ChevronDown, Check, Info }
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
+import EmergencyBanner from "@/components/ui/EmergencyBanner";
 
 interface Clinic {
   id: string;
@@ -166,10 +167,10 @@ export default function MentalHealthSupportPage() {
             <div className="rounded-[24px] bg-brand-blue-light/40 border border-brand-blue-light/35 p-8 sm:p-12 mb-12 flex flex-col md:flex-row gap-8 items-center justify-between">
               <div className="flex flex-col gap-4 max-w-[640px]">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Clinical & Community Care</span>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-navy leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primaryText leading-tight">
                   Deaf Mental Health Support
                 </h1>
-                <p className="text-base font-semibold text-brand-navy/70 leading-relaxed">
+                <p className="text-base font-semibold text-primaryText/70 leading-relaxed">
                   Tasmanian database of deaf-aware, signing, and NDIS-certified therapists. Find support that understands your communication needs.
                 </p>
               </div>
@@ -184,21 +185,7 @@ export default function MentalHealthSupportPage() {
             </div>
 
             {/* Quick Emergency Banner */}
-            <div className="rounded-2xl border-2 border-brand-coral bg-brand-peach-light/40 p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 shadow-sm">
-              <div className="flex items-center gap-3">
-                <Info className="h-6 w-6 text-brand-coral shrink-0" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-extrabold text-brand-navy">Need Crisis Support Right Now?</span>
-                  <span className="text-xs font-semibold text-brand-navy/60">If you are in immediate danger or need urgent help, access emergency lines.</span>
-                </div>
-              </div>
-              <Link 
-                href="/support/crisis" 
-                className="w-full sm:w-auto h-11 px-5 flex items-center justify-center rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-extrabold uppercase tracking-wider transition-all"
-              >
-                Go to Crisis Page
-              </Link>
-            </div>
+            <EmergencyBanner className="mb-12" />
 
             {/* Main Interactive Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
@@ -210,27 +197,27 @@ export default function MentalHealthSupportPage() {
                 <div className="flex flex-col gap-2">
                   <label htmlFor="search" className="text-xs font-extrabold uppercase tracking-wider text-brand-teal">Search Services</label>
                   <div className="relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-navy/30" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primaryText/30" />
                     <input
                       id="search"
                       type="text"
                       placeholder="Search clinic names, locations..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full h-12 pl-11 pr-4 rounded-xl border-2 border-brand-navy/10 bg-white text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none transition-colors"
+                      className="w-full h-12 pl-11 pr-4 rounded-xl border-2 border-primaryText/10 bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Region Filter with Interactive Map */}
-                <div className="rounded-2xl border border-brand-navy/10 bg-brand-blue-light/10 p-6 flex flex-col gap-6">
+                <div className="rounded-2xl border border-primaryText/10 bg-brand-blue-light/10 p-6 flex flex-col gap-6">
                   <div className="flex flex-col">
                     <span className="text-xs font-extrabold uppercase tracking-wider text-brand-teal">Tasmania Region Filter</span>
-                    <span className="text-[11px] font-semibold text-brand-navy/55">Click a marker on the map to filter clinics by location.</span>
+                    <span className="text-[11px] font-semibold text-primaryText/55">Click a marker on the map to filter clinics by location.</span>
                   </div>
 
                   {/* SVG Map of Tasmania */}
-                  <div className="relative aspect-[16/14] w-full max-w-[280px] mx-auto bg-brand-blue-light/20 rounded-xl border border-brand-navy/5 p-4 flex items-center justify-center">
+                  <div className="relative aspect-[16/14] w-full max-w-[280px] mx-auto bg-brand-blue-light/20 rounded-xl border border-primaryText/5 p-4 flex items-center justify-center">
                     
                     {/* Simplified SVG Outline of Tasmania */}
                     <svg viewBox="0 0 100 90" className="w-full h-full text-brand-teal/15" fill="currentColor" aria-hidden="true">
@@ -244,7 +231,7 @@ export default function MentalHealthSupportPage() {
                       className={`absolute top-[28%] left-[28%] -translate-x-1/2 -translate-y-1/2 px-2.5 py-1 rounded-full text-[9px] font-extrabold flex items-center gap-1 shadow-sm transition-all focus:outline-none border-2 ${
                         selectedRegion === 'northwest' 
                           ? 'bg-brand-coral border-brand-coral text-white scale-105' 
-                          : 'bg-white border-brand-navy/10 text-brand-navy hover:border-brand-teal'
+                          : 'bg-white border-primaryText/10 text-primaryText hover:border-brand-teal'
                       }`}
                       aria-label="Filter Devonport and North-West region"
                     >
@@ -258,7 +245,7 @@ export default function MentalHealthSupportPage() {
                       className={`absolute top-[34%] left-[62%] -translate-x-1/2 -translate-y-1/2 px-2.5 py-1 rounded-full text-[9px] font-extrabold flex items-center gap-1 shadow-sm transition-all focus:outline-none border-2 ${
                         selectedRegion === 'north' 
                           ? 'bg-brand-coral border-brand-coral text-white scale-105' 
-                          : 'bg-white border-brand-navy/10 text-brand-navy hover:border-brand-teal'
+                          : 'bg-white border-primaryText/10 text-primaryText hover:border-brand-teal'
                       }`}
                       aria-label="Filter Launceston and Northern region"
                     >
@@ -272,7 +259,7 @@ export default function MentalHealthSupportPage() {
                       className={`absolute top-[72%] left-[58%] -translate-x-1/2 -translate-y-1/2 px-2.5 py-1 rounded-full text-[9px] font-extrabold flex items-center gap-1 shadow-sm transition-all focus:outline-none border-2 ${
                         selectedRegion === 'south' 
                           ? 'bg-brand-coral border-brand-coral text-white scale-105' 
-                          : 'bg-white border-brand-navy/10 text-brand-navy hover:border-brand-teal'
+                          : 'bg-white border-primaryText/10 text-primaryText hover:border-brand-teal'
                       }`}
                       aria-label="Filter Hobart and Southern region"
                     >
@@ -284,12 +271,12 @@ export default function MentalHealthSupportPage() {
 
                   {/* Manual region selection select dropdown */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="region-select" className="text-[10px] font-extrabold uppercase tracking-wider text-brand-navy/40">Select Region Manually</label>
+                    <label htmlFor="region-select" className="text-[10px] font-extrabold uppercase tracking-wider text-primaryText/40">Select Region Manually</label>
                     <select
                       id="region-select"
                       value={selectedRegion}
                       onChange={(e) => setSelectedRegion(e.target.value)}
-                      className="h-10 px-3 rounded-lg border-2 border-brand-navy/10 text-xs font-bold text-brand-navy focus:border-brand-teal bg-white"
+                      className="h-10 px-3 rounded-lg border-2 border-primaryText/10 text-xs font-bold text-primaryText focus:border-brand-teal bg-white"
                     >
                       <option value="all">Show All Regions (Statewide)</option>
                       <option value="south">Hobart & South</option>
@@ -300,39 +287,39 @@ export default function MentalHealthSupportPage() {
                 </div>
 
                 {/* Accessibility filters checklist */}
-                <div className="rounded-2xl border border-brand-navy/10 bg-white p-6 flex flex-col gap-4">
+                <div className="rounded-2xl border border-primaryText/10 bg-white p-6 flex flex-col gap-4">
                   <span className="text-xs font-extrabold uppercase tracking-wider text-brand-teal">Accessibility Filters</span>
                   
-                  <div className="flex flex-col gap-2.5 text-xs font-bold text-brand-navy">
+                  <div className="flex flex-col gap-2.5 text-xs font-bold text-primaryText">
                     
                     <label className="flex items-center gap-2.5 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={filterAuslan}
-                        onChange={() => setFilterAuslan(!filterAuslan)}
-                        className="h-4.5 w-4.5 rounded border-brand-navy/20 accent-brand-teal"
+                        onChange={(e) => setFilterAuslan(e.target.checked)}
+                        className="rounded h-4 w-4 text-brand-coral focus:ring-brand-coral border-primaryText/20"
                       />
-                      <span>🤟 Fluent Auslan Signers</span>
+                      <span>🤟 Auslan Fluent Therapists Only</span>
                     </label>
 
                     <label className="flex items-center gap-2.5 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={filterNdis}
-                        onChange={() => setFilterNdis(!filterNdis)}
-                        className="h-4.5 w-4.5 rounded border-brand-navy/20 accent-brand-teal"
+                        onChange={(e) => setFilterNdis(e.target.checked)}
+                        className="rounded h-4 w-4 text-brand-coral focus:ring-brand-coral border-primaryText/20"
                       />
-                      <span>✓ NDIS Registered Therapists</span>
+                      <span>✓ Registered NDIS Providers</span>
                     </label>
 
                     <label className="flex items-center gap-2.5 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={filterTelehealth}
-                        onChange={() => setFilterTelehealth(!filterTelehealth)}
-                        className="h-4.5 w-4.5 rounded border-brand-navy/20 accent-brand-teal"
+                        onChange={(e) => setFilterTelehealth(e.target.checked)}
+                        className="rounded h-4 w-4 text-brand-coral focus:ring-brand-coral border-primaryText/20"
                       />
-                      <span>📹 Video Telehealth Offered</span>
+                      <span>📹 Video Telehealth Available</span>
                     </label>
 
                   </div>
@@ -340,11 +327,11 @@ export default function MentalHealthSupportPage() {
 
               </div>
 
-              {/* Right Column: Dynamic Clinic List */}
+              {/* Right Column: Search Results */}
               <div className="lg:col-span-7 flex flex-col gap-6">
                 
-                {/* Category tab chips */}
-                <div className="flex flex-wrap gap-2 border-b border-brand-navy/10 pb-4">
+                {/* Category tabs */}
+                <div className="flex flex-wrap gap-2 border-b border-primaryText/10 pb-4">
                   {[
                     { id: 'all', label: 'All Services' },
                     { id: 'counselling', label: 'Counselling' },
@@ -355,10 +342,10 @@ export default function MentalHealthSupportPage() {
                     <button
                       key={tab.id}
                       onClick={() => setSelectedCategory(tab.id)}
-                      className={`px-4 py-2 rounded-full text-xs font-bold transition-all focus:outline-none ${
-                        selectedCategory === tab.id
+                      className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                        selectedCategory === tab.id 
                           ? 'bg-brand-teal text-white shadow-sm'
-                          : 'bg-brand-blue-light/40 border border-brand-navy/5 text-brand-navy/70 hover:bg-brand-blue-light/70'
+                          : 'bg-brand-blue-light/40 border border-primaryText/5 text-primaryText/70 hover:bg-brand-blue-light/70'
                       }`}
                     >
                       {tab.label}
@@ -367,7 +354,7 @@ export default function MentalHealthSupportPage() {
                 </div>
 
                 {/* Filter indicators */}
-                <div className="text-xs font-semibold text-brand-navy/50 flex justify-between items-center">
+                <div className="text-xs font-semibold text-primaryText/50 flex justify-between items-center">
                   <span>Showing {filteredClinics.length} clinical support pathways</span>
                   {(searchQuery || selectedCategory !== 'all' || selectedRegion !== 'all' || filterAuslan || filterNdis || filterTelehealth) && (
                     <button
@@ -392,25 +379,25 @@ export default function MentalHealthSupportPage() {
                     filteredClinics.map((clinic) => (
                       <div 
                         key={clinic.id} 
-                        className="rounded-2xl border-2 border-brand-navy/5 bg-white p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md hover:border-brand-teal/20 transition-all duration-300 relative overflow-hidden"
+                        className="rounded-2xl border-2 border-primaryText/5 bg-white p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md hover:border-brand-teal/20 transition-all duration-300 relative overflow-hidden"
                         role="listitem"
                       >
                         
                         <div className="flex flex-col gap-3">
                           {/* Heading */}
                           <div className="flex flex-wrap items-center justify-between gap-2">
-                            <h3 className="text-lg font-bold text-brand-navy">{clinic.name}</h3>
+                            <h3 className="text-lg font-bold text-primaryText">{clinic.name}</h3>
                             <span className="text-[9px] font-extrabold uppercase tracking-wider text-brand-teal bg-brand-teal/15 px-2.5 py-1 rounded">
                               {clinic.region === 'statewide' ? 'Statewide' : clinic.region === 'south' ? 'South / Hobart' : clinic.region === 'north' ? 'North / Laun' : 'NW / Devonport'}
                             </span>
                           </div>
 
-                          <p className="text-xs font-medium text-brand-navy/70 leading-relaxed pr-2">
+                          <p className="text-xs font-medium text-primaryText/70 leading-relaxed pr-2">
                             {clinic.description}
                           </p>
 
                           {/* Address details */}
-                          <div className="flex items-center gap-2 text-xs font-bold text-brand-navy/60">
+                          <div className="flex items-center gap-2 text-xs font-bold text-primaryText/60">
                             <MapPin className="h-4 w-4 text-brand-teal shrink-0" />
                             <span>{clinic.address}</span>
                           </div>
@@ -436,8 +423,8 @@ export default function MentalHealthSupportPage() {
                         </div>
 
                         {/* Divider Line */}
-                        <div className="border-t border-brand-navy/5 pt-4 flex flex-wrap items-center justify-between gap-4">
-                          <div className="flex flex-wrap gap-4 text-xs font-semibold text-brand-navy/80">
+                        <div className="border-t border-primaryText/5 pt-4 flex flex-wrap items-center justify-between gap-4">
+                          <div className="flex flex-wrap gap-4 text-xs font-semibold text-primaryText/80">
                             <a href={`tel:${clinic.phone.replace(/\s+/g, '')}`} className="flex items-center gap-1.5 hover:text-brand-coral">
                               <Phone className="h-3.5 w-3.5" />
                               <span>{clinic.phone}</span>
@@ -460,10 +447,10 @@ export default function MentalHealthSupportPage() {
                       </div>
                     ))
                   ) : (
-                    <div className="rounded-2xl border border-dashed border-brand-navy/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
+                    <div className="rounded-2xl border border-dashed border-primaryText/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
                       <span className="text-3xl">🔍</span>
-                      <span className="text-sm font-bold text-brand-navy">No Clinical Supports Found</span>
-                      <span className="text-xs text-brand-navy/55 max-w-[340px]">Try adjusting your region selections, enabling Telehealth alternatives, or resetting filters.</span>
+                      <span className="text-sm font-bold text-primaryText">No Clinical Supports Found</span>
+                      <span className="text-xs text-primaryText/55 max-w-[340px]">Try adjusting your region selections, enabling Telehealth alternatives, or resetting filters.</span>
                     </div>
                   )}
                 </div>
@@ -475,10 +462,10 @@ export default function MentalHealthSupportPage() {
             {/* Collapsible Accordion FAQs */}
             <div className="max-w-[760px] mx-auto mb-16">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
+                <h2 className="text-2xl font-extrabold tracking-tight text-primaryText sm:text-3xl">
                   Frequently Asked Questions
                 </h2>
-                <p className="text-xs font-semibold text-brand-navy/60 mt-1.5">
+                <p className="text-xs font-semibold text-primaryText/60 mt-1.5">
                   Understand how to access, fund, and coordinate clinical services in Tasmania.
                 </p>
               </div>
@@ -489,24 +476,24 @@ export default function MentalHealthSupportPage() {
                   return (
                     <div 
                       key={index}
-                      className="rounded-2xl border border-brand-navy/10 bg-white overflow-hidden transition-all duration-200"
+                      className="rounded-2xl border border-primaryText/10 bg-white overflow-hidden transition-all duration-200"
                       role="listitem"
                     >
                       <button
                         onClick={() => toggleFaq(index)}
-                        className="w-full flex items-center justify-between p-5 text-left text-brand-navy hover:text-brand-teal focus:outline-none transition-colors"
+                        className="w-full flex items-center justify-between p-5 text-left text-primaryText hover:text-brand-teal focus:outline-none transition-colors"
                         aria-expanded={isOpen}
                       >
                         <span className="text-sm font-extrabold flex items-center gap-2.5">
                           <HelpCircle className="h-4.5 w-4.5 text-brand-teal shrink-0" />
                           <span>{faq.q}</span>
                         </span>
-                        <ChevronDown className={`h-4.5 w-4.5 text-brand-navy/40 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`h-4.5 w-4.5 text-primaryText/40 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                       </button>
 
                       {isOpen && (
-                        <div className="px-5 pb-5 pt-0 border-t border-brand-navy/5">
-                          <p className="text-xs font-semibold leading-relaxed text-brand-navy/70 mt-3 pl-7">
+                        <div className="px-5 pb-5 pt-0 border-t border-primaryText/5">
+                          <p className="text-xs font-semibold leading-relaxed text-primaryText/70 mt-3 pl-7">
                             {faq.a}
                           </p>
                         </div>

@@ -116,7 +116,7 @@ export default function Navbar() {
           >
             <HandSignIcon />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-tight text-brand-navy">Deaf Connect</span>
+              <span className="text-xl font-bold tracking-tight text-primaryText">Deaf Connect</span>
               <span className="text-xs font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
             </div>
           </Link>
@@ -129,7 +129,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="relative py-2 text-[15px] font-semibold text-brand-navy/80 hover:text-brand-navy transition-colors focus:outline-none"
+                  className="relative py-2 text-[15px] font-semibold text-primaryText/80 hover:text-primaryText transition-colors focus:outline-none"
                 >
                   {link.name}
                   {active && (
@@ -147,33 +147,11 @@ export default function Navbar() {
           {/* Right Controls: Preferences Menu + Mobile Toggle */}
           <div className="flex items-center gap-3">
             
-            {/* Dynamic Mode Chip (Visible on Desktop) */}
-            <div className="hidden lg:flex items-center gap-1.5 rounded-full bg-brand-blue-light/50 border border-brand-teal/20 px-3.5 py-2 text-xs font-bold text-brand-navy select-none shrink-0" aria-label={`Current website display mode: ${accessibilityMode}`}>
-              {accessibilityMode === 'auslan' && (
-                <>
-                  <span className="text-[14px]">🤟</span>
-                  <span>Auslan Mode</span>
-                </>
-              )}
-              {accessibilityMode === 'easyRead' && (
-                <>
-                  <span className="text-[14px]">📖</span>
-                  <span>Easy Read</span>
-                </>
-              )}
-              {accessibilityMode === 'plainLanguage' && (
-                <>
-                  <span className="text-[14px]">📝</span>
-                  <span>Plain Language</span>
-                </>
-              )}
-            </div>
-
             {/* Preferences Dropdown */}
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button 
-                  className="flex items-center gap-2 rounded-full border border-brand-navy/10 bg-brand-blue-light/40 hover:bg-brand-blue-light/70 px-4 py-2.5 text-[14px] font-bold text-brand-navy transition-all hover:border-brand-navy/20 cursor-pointer focus:outline-none"
+                  className="flex items-center gap-2 rounded-full border border-primaryText/10 bg-brand-blue-light/40 hover:bg-brand-blue-light/70 px-4 py-2.5 text-[14px] font-bold text-primaryText transition-all hover:border-primaryText/20 cursor-pointer focus:outline-none"
                   aria-label="Open accessibility preferences"
                 >
                   <Accessibility className="h-[18px] w-[18px] text-brand-teal" />
@@ -184,17 +162,17 @@ export default function Navbar() {
 
               <DropdownMenu.Portal>
                 <DropdownMenu.Content 
-                  className="z-50 min-w-[300px] overflow-hidden rounded-[20px] border border-brand-navy/10 bg-white p-4 shadow-xl animate-in fade-in-50 slide-in-from-top-1"
+                  className="z-50 min-w-[300px] overflow-hidden rounded-[20px] border border-primaryText/10 bg-white p-4 shadow-xl animate-in fade-in-50 slide-in-from-top-1"
                   align="end"
                   sideOffset={8}
                 >
-                  <div className="mb-3 px-2 pb-2 border-b border-brand-navy/5">
-                    <p className="text-xs font-bold text-brand-navy/50 uppercase tracking-wider">Accessibility Settings</p>
+                  <div className="mb-3 px-2 pb-2 border-b border-primaryText/5">
+                    <p className="text-xs font-bold text-primaryText/50 uppercase tracking-wider">Accessibility Settings</p>
                   </div>
 
                   {/* Accessibility Display Mode */}
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-brand-navy">
+                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-primaryText">
                       <Accessibility className="h-4 w-4 text-brand-teal" />
                       <span>Display Mode</span>
                     </div>
@@ -205,8 +183,8 @@ export default function Navbar() {
                           onClick={() => setAccessibilityMode(mode)}
                           className={`rounded-lg py-1.5 text-xs font-bold transition-all capitalize cursor-pointer ${
                             accessibilityMode === mode 
-                              ? 'bg-white text-brand-navy shadow-sm' 
-                              : 'text-brand-navy/60 hover:text-brand-navy hover:bg-white/40'
+                              ? 'bg-white text-primaryText shadow-sm' 
+                              : 'text-primaryText/60 hover:text-primaryText hover:bg-white/40'
                           }`}
                         >
                           {mode === 'auslan' ? 'Auslan' : mode === 'easyRead' ? 'Easy' : 'Plain'}
@@ -217,7 +195,7 @@ export default function Navbar() {
 
                   {/* Text Size Controls */}
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-brand-navy">
+                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-primaryText">
                       <Type className="h-4 w-4 text-brand-teal" />
                       <span>Text Size</span>
                     </div>
@@ -228,8 +206,8 @@ export default function Navbar() {
                           onClick={() => setTextSize(size)}
                           className={`rounded-lg py-1.5 text-xs font-bold transition-all capitalize cursor-pointer ${
                             textSize === size 
-                              ? 'bg-white text-brand-navy shadow-sm' 
-                              : 'text-brand-navy/60 hover:text-brand-navy hover:bg-white/40'
+                              ? 'bg-white text-primaryText shadow-sm' 
+                              : 'text-primaryText/60 hover:text-primaryText hover:bg-white/40'
                           }`}
                         >
                           {size === 'normal' ? 'Normal' : size === 'large' ? 'Large' : 'X-Large'}
@@ -240,7 +218,7 @@ export default function Navbar() {
 
                   {/* Contrast Preference */}
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-brand-navy">
+                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-primaryText">
                       <Eye className="h-4 w-4 text-brand-teal" />
                       <span>Color Contrast</span>
                     </div>
@@ -251,8 +229,8 @@ export default function Navbar() {
                           onClick={() => setContrastMode(mode)}
                           className={`rounded-lg py-1.5 text-xs font-bold transition-all capitalize cursor-pointer ${
                             contrastMode === mode 
-                              ? 'bg-white text-brand-navy shadow-sm' 
-                              : 'text-brand-navy/60 hover:text-brand-navy hover:bg-white/40'
+                              ? 'bg-white text-primaryText shadow-sm' 
+                              : 'text-primaryText/60 hover:text-primaryText hover:bg-white/40'
                           }`}
                         >
                           {mode === 'normal' ? 'Default' : 'High Contrast'}
@@ -263,7 +241,7 @@ export default function Navbar() {
 
                   {/* Reduced Motion Toggle */}
                   <div>
-                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-brand-navy">
+                    <div className="flex items-center gap-2 px-2 mb-2 text-sm font-bold text-primaryText">
                       <Activity className="h-4 w-4 text-brand-teal" />
                       <span>Animations</span>
                     </div>
@@ -274,8 +252,8 @@ export default function Navbar() {
                           onClick={() => setMotionPreference(pref)}
                           className={`rounded-lg py-1.5 text-xs font-bold transition-all capitalize cursor-pointer ${
                             motionPreference === pref 
-                              ? 'bg-white text-brand-navy shadow-sm' 
-                              : 'text-brand-navy/60 hover:text-brand-navy hover:bg-white/40'
+                              ? 'bg-white text-primaryText shadow-sm' 
+                              : 'text-primaryText/60 hover:text-primaryText hover:bg-white/40'
                           }`}
                         >
                           {pref === 'normal' ? 'Enabled' : 'Reduced'}
@@ -290,7 +268,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex md:hidden items-center justify-center rounded-full p-2 text-brand-navy hover:bg-brand-blue-light/40 transition-colors focus:outline-none"
+              className="flex md:hidden items-center justify-center rounded-full p-2 text-primaryText hover:bg-brand-blue-light/40 transition-colors focus:outline-none"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -329,8 +307,8 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`text-[17px] font-bold py-2 border-b border-brand-navy/5 flex justify-between items-center transition-colors ${
-                        active ? 'text-brand-coral' : 'text-brand-navy hover:text-brand-coral'
+                      className={`text-[17px] font-bold py-2 border-b border-primaryText/5 flex justify-between items-center transition-colors ${
+                        active ? 'text-brand-coral' : 'text-primaryText hover:text-brand-coral'
                       }`}
                     >
                       <span>{link.name}</span>

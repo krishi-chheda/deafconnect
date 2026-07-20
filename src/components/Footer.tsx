@@ -3,7 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { useAccessibility } from '@/context/AccessibilityContext';
+
 export default function Footer() {
+  const { accessibilityMode } = useAccessibility();
+  const isPlainLanguage = accessibilityMode === 'plainLanguage';
   
   const HandSignIcon = () => (
     <svg 
@@ -12,7 +16,7 @@ export default function Footer() {
       viewBox="0 0 32 32" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      className="text-brand-coral shrink-0"
+      className="text-brand-coral shrink-0 hide-in-plain-language"
       aria-hidden="true"
     >
       <path 
@@ -39,11 +43,11 @@ export default function Footer() {
   );
 
   return (
-    <footer className="bg-brand-footer-bg text-brand-navy mt-10 border-t border-brand-navy/10 relative z-10 animate-in" aria-label="Footer Navigation">
+    <footer className="bg-brand-footer-bg text-primaryText mt-10 border-t border-primaryText/10 relative z-10 animate-in" aria-label="Footer Navigation">
       <div className="mx-auto max-w-[1440px] px-6 sm:px-8 py-10">
         
         {/* Top 5-Column Balanced Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pb-8 border-b border-brand-navy/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pb-8 border-b border-primaryText/10">
           
           {/* Column 1: About */}
           <div className="flex flex-col gap-3">
@@ -52,13 +56,13 @@ export default function Footer() {
               className="flex items-center gap-2 focus:outline-none"
               aria-label="Deaf Connect Tasmania Home"
             >
-              <HandSignIcon />
+              {!isPlainLanguage && <HandSignIcon />}
               <div className="flex flex-col leading-none">
-                <span className="text-lg font-bold tracking-tight text-brand-navy">Deaf Connect</span>
+                <span className="text-lg font-bold tracking-tight text-primaryText">Deaf Connect</span>
                 <span className="text-[10px] font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
               </div>
             </Link>
-            <p className="text-xs leading-relaxed text-brand-navy/70 font-semibold pr-2">
+            <p className="text-xs leading-relaxed text-primaryText/70 font-semibold pr-2">
               Accessible mental health and wellbeing support navigation for Tasmanian Deaf and hard-of-hearing communities.
             </p>
           </div>
@@ -68,7 +72,7 @@ export default function Footer() {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-2 text-xs font-semibold text-brand-navy/80" aria-label="Footer Quick Links">
+            <nav className="flex flex-col gap-2 text-xs font-semibold text-primaryText/80" aria-label="Footer Quick Links">
               <Link href="/" className="hover:text-brand-coral transition-colors focus:outline-none">Home</Link>
               <Link href="/support" className="hover:text-brand-coral transition-colors focus:outline-none">Find Support</Link>
               <Link href="/services" className="hover:text-brand-coral transition-colors focus:outline-none">Services</Link>
@@ -83,17 +87,17 @@ export default function Footer() {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">
               Contact
             </h4>
-            <div className="flex flex-col gap-2.5 text-xs font-semibold text-brand-navy/80">
+            <div className="flex flex-col gap-2.5 text-xs font-semibold text-primaryText/80">
               <p className="flex flex-col">
-                <span className="text-[9px] font-extrabold text-brand-navy/40 uppercase tracking-wider">SMS Text Hotline</span>
-                <a href="sms:0477131114" className="hover:text-brand-coral font-bold text-brand-navy mt-0.5">0477 13 11 14</a>
+                <span className="text-[9px] font-extrabold text-primaryText/40 uppercase tracking-wider">SMS Text Hotline</span>
+                <a href="sms:0477131114" className="hover:text-brand-coral font-bold text-primaryText mt-0.5">0477 13 11 14</a>
               </p>
               <p className="flex flex-col">
-                <span className="text-[9px] font-extrabold text-brand-navy/40 uppercase tracking-wider">Email Inquiry</span>
-                <a href="mailto:support@deafconnecttas.org" className="hover:text-brand-coral font-bold text-brand-navy mt-0.5">support@deafconnecttas.org</a>
+                <span className="text-[9px] font-extrabold text-primaryText/40 uppercase tracking-wider">Email Inquiry</span>
+                <a href="mailto:support@deafconnecttas.org" className="hover:text-brand-coral font-bold text-primaryText mt-0.5">support@deafconnecttas.org</a>
               </p>
               <p className="flex flex-col">
-                <span className="text-[9px] font-extrabold text-brand-navy/40 uppercase tracking-wider">Relay Service</span>
+                <span className="text-[9px] font-extrabold text-primaryText/40 uppercase tracking-wider">Relay Service</span>
                 <a href="https://www.accesshub.gov.au/about-the-nrs" target="_blank" rel="noopener noreferrer" className="hover:text-brand-coral underline mt-0.5">NRS Calling Portal</a>
               </p>
             </div>
@@ -104,21 +108,21 @@ export default function Footer() {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">
               Accessibility
             </h4>
-            <div className="flex flex-col gap-2 text-xs font-semibold text-brand-navy/85" role="list">
+            <div className="flex flex-col gap-2 text-xs font-semibold text-primaryText/85" role="list">
               <div className="flex items-center gap-2" role="listitem">
-                <span className="text-sm shrink-0" aria-hidden="true">🤟</span> 
+                {!isPlainLanguage && <span className="text-sm shrink-0 hide-in-plain-language" aria-hidden="true">🤟</span>} 
                 <span className="font-extrabold">Auslan Mode</span>
               </div>
               <div className="flex items-center gap-2" role="listitem">
-                <span className="text-sm shrink-0" aria-hidden="true">📖</span> 
+                {!isPlainLanguage && <span className="text-sm shrink-0 hide-in-plain-language" aria-hidden="true">📖</span>} 
                 <span className="font-extrabold">Easy Read Support</span>
               </div>
               <div className="flex items-center gap-2" role="listitem">
-                <span className="text-sm shrink-0" aria-hidden="true">📝</span> 
+                {!isPlainLanguage && <span className="text-sm shrink-0 hide-in-plain-language" aria-hidden="true">📝</span>} 
                 <span className="font-extrabold">Plain Language</span>
               </div>
               <div className="flex items-center gap-2" role="listitem">
-                <span className="text-sm shrink-0" aria-hidden="true">⚙</span> 
+                {!isPlainLanguage && <span className="text-sm shrink-0 hide-in-plain-language" aria-hidden="true">⚙</span>} 
                 <span className="font-extrabold">Preferences Panel</span>
               </div>
             </div>
@@ -132,18 +136,18 @@ export default function Footer() {
             
             {/* visually distinct specs & disclaimers info card */}
             <div className="rounded-xl border border-brand-teal/20 bg-white p-3.5 flex flex-col gap-2.5 shadow-sm">
-              <ul className="flex flex-col gap-1 text-[11px] font-bold text-brand-navy/80" role="list">
+              <ul className="flex flex-col gap-1 text-[11px] font-bold text-primaryText/80" role="list">
                 <li className="flex items-center gap-1.5" role="listitem">
-                  <span className="text-brand-teal text-xs" aria-hidden="true">✓</span> WCAG AA Accessibility
+                  {!isPlainLanguage && <span className="text-brand-teal text-xs hide-in-plain-language" aria-hidden="true">✓</span>} WCAG AA Accessibility
                 </li>
                 <li className="flex items-center gap-1.5" role="listitem">
-                  <span className="text-brand-teal text-xs" aria-hidden="true">✓</span> Auslan-first design
+                  {!isPlainLanguage && <span className="text-brand-teal text-xs hide-in-plain-language" aria-hidden="true">✓</span>} Auslan-first design
                 </li>
                 <li className="flex items-center gap-1.5" role="listitem">
-                  <span className="text-brand-teal text-xs" aria-hidden="true">✓</span> Easy Read support
+                  {!isPlainLanguage && <span className="text-brand-teal text-xs hide-in-plain-language" aria-hidden="true">✓</span>} Easy Read support
                 </li>
                 <li className="flex items-center gap-1.5" role="listitem">
-                  <span className="text-brand-teal text-xs" aria-hidden="true">✓</span> Plain Language support
+                  {!isPlainLanguage && <span className="text-brand-teal text-xs hide-in-plain-language" aria-hidden="true">✓</span>} Plain Language support
                 </li>
               </ul>
               
@@ -156,7 +160,7 @@ export default function Footer() {
               </div>
             </div>
             
-            <p className="text-[10px] font-semibold text-brand-navy/50 leading-tight">
+            <p className="text-[10px] font-semibold text-primaryText/50 leading-tight">
               Developed for the Mental Health Council of Tasmania through the Monash Innovation Guarantee.
             </p>
           </div>
@@ -164,7 +168,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom footer row */}
-        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-brand-navy/55">
+        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-primaryText/55">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
             <span>© {new Date().getFullYear()} Deaf Connect Tasmania. Portfolio Prototype.</span>
             <a href="#accessibility-policy" className="hover:text-brand-coral transition-colors focus:outline-none">Accessibility Policy</a>

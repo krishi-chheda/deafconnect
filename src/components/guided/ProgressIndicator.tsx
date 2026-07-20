@@ -71,7 +71,7 @@ export default function ProgressIndicator({ currentStep, totalSteps }: ProgressI
 
               {/* Text Label */}
               <span className={`text-[11px] uppercase tracking-widest font-extrabold transition-colors duration-300 ${
-                isActive ? 'text-brand-coral' : isCompleted ? 'text-brand-navy' : 'text-brand-navy/35'
+                isActive ? 'text-brand-coral' : isCompleted ? 'text-primaryText' : 'text-primaryText/35'
               }`}>
                 {st.label}
               </span>

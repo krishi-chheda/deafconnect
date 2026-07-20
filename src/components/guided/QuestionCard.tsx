@@ -27,6 +27,7 @@ export default function QuestionCard({
 }: QuestionCardProps) {
   const { accessibilityMode } = useAccessibility();
   const isEasyRead = accessibilityMode === 'easyRead';
+  const isPlainLanguage = accessibilityMode === 'plainLanguage';
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Keyboard handler for accessibility
@@ -50,14 +51,14 @@ export default function QuestionCard({
       } ${
         isSelected 
           ? 'border-brand-coral bg-brand-coral/[0.06] ring-1 ring-brand-coral shadow-md scale-[1.01]' 
-          : 'border-brand-navy/10 bg-white hover:border-brand-teal/30 hover:shadow-md'
+          : 'border-primaryText/10 bg-white hover:border-brand-teal/30 hover:shadow-md'
       }`}
       aria-label={`${title}${isEasyRead && description ? `: ${description}` : ''}`}
     >
       
-      {/* Visual illustration (larger containers) */}
-      {imageSrc && (
-        <div className={`relative shrink-0 rounded-xl bg-brand-blue-light/40 border border-brand-blue-light/30 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-102 ${
+      {/* Visual illustration (hidden in Plain Language mode) */}
+      {imageSrc && !isPlainLanguage && (
+        <div className={`relative shrink-0 rounded-xl bg-brand-blue-light/40 border border-brand-blue-light/30 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-102 hide-in-plain-language ${
           isEasyRead ? 'h-24 w-24' : 'h-20 w-20'
         }`}>
           <Image
@@ -71,7 +72,7 @@ export default function QuestionCard({
 
       {/* Card Details: title and description */}
       <div className="flex-1 flex flex-col gap-1.5 pr-2">
-        <h3 className={`font-extrabold text-brand-navy leading-snug transition-colors ${
+        <h3 className={`font-extrabold text-primaryText leading-snug transition-colors ${
           isSelected ? 'text-brand-coral' : 'group-hover:text-brand-teal'
         } ${
           isEasyRead ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg'
@@ -81,7 +82,7 @@ export default function QuestionCard({
         
         {/* Render description ONLY when Easy Read mode is active (for less text cards) */}
         {isEasyRead && description && (
-          <p className="font-semibold text-brand-navy/70 leading-relaxed text-sm sm:text-base">
+          <p className="font-semibold text-primaryText/70 leading-relaxed text-sm sm:text-base">
             {description}
           </p>
         )}

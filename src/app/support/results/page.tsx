@@ -14,6 +14,7 @@ import { auslanData } from '@/data/auslan';
 
 import RecommendationCard from "@/components/guided/RecommendationCard";
 import AnimatePage from "@/components/guided/AnimatePage";
+import EmergencyBanner from "@/components/ui/EmergencyBanner";
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -118,22 +119,22 @@ export default function ResultsPage() {
       <div className="mx-auto max-w-[1200px] px-6 sm:px-8 py-10 flex flex-col gap-8">
         
         {/* Results Title header */}
-        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end border-b border-brand-navy/10 pb-6 gap-4 text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end border-b border-primaryText/10 pb-6 gap-4 text-center sm:text-left">
           <div className="flex flex-col gap-2">
             <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Navigator Match Results</span>
-            <h1 className={`font-extrabold text-brand-navy tracking-tight leading-tight ${
+            <h1 className={`font-extrabold text-primaryText tracking-tight leading-tight ${
               isEasyRead ? 'text-3xl sm:text-4xl' : 'text-3xl'
             }`}>
               {activeData.results.title}
             </h1>
-            <p className={`font-medium text-brand-navy/60 ${isEasyRead ? 'text-lg' : 'text-sm'}`}>
+            <p className={`font-medium text-primaryText/60 ${isEasyRead ? 'text-lg' : 'text-sm'}`}>
               {activeData.results.subtitle}
             </p>
           </div>
 
           <button
             onClick={handleRestart}
-            className="rounded-full border-[2px] border-brand-navy/10 bg-white hover:bg-brand-blue-light/35 px-6 py-2.5 text-xs font-bold text-brand-navy cursor-pointer focus:outline-none transition-all"
+            className="rounded-full border-[2px] border-primaryText/10 bg-white hover:bg-brand-blue-light/35 px-6 py-2.5 text-xs font-bold text-primaryText cursor-pointer focus:outline-none transition-all"
           >
             Restart support flow
           </button>
@@ -160,25 +161,8 @@ export default function ResultsPage() {
           ))}
         </div>
 
-        {/* Urgent Crisis NRS details */}
-        <div className="rounded-[20px] bg-brand-navy text-white p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 mt-8">
-          <div className="flex items-start gap-4">
-            <AlertCircle className="h-6 w-6 text-brand-teal mt-1 shrink-0" />
-            <div className="flex flex-col gap-1">
-              <h4 className="font-extrabold text-lg tracking-tight">Need immediate or text emergency support?</h4>
-              <p className="text-xs font-medium text-white/70 max-w-[620px] leading-relaxed">
-                You can contact the Tasmanian Emergency services using the National Relay Service, or send a silent SMS to Lifeline Text at 0477 13 11 14.
-              </p>
-            </div>
-          </div>
-          <a 
-            href="sms:0477131114"
-            className="shrink-0 flex items-center justify-center gap-2 rounded-full bg-brand-coral hover:bg-brand-coral/95 px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-white shadow-sm text-center focus:outline-none"
-          >
-            <PhoneCall className="h-4 w-4" />
-            <span>Text Lifeline</span>
-          </a>
-        </div>
+        {/* Urgent Crisis Emergency Banner */}
+        <EmergencyBanner className="mt-8" />
 
       </div>
 
@@ -189,12 +173,12 @@ export default function ResultsPage() {
           <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-navy/60 backdrop-blur-sm animate-in fade-in" />
           
           {/* Modal Content container */}
-          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-[24px] border border-brand-navy/10 bg-white p-6 md:p-8 shadow-2xl animate-in zoom-in-95 duration-200 focus:outline-none text-brand-navy">
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-[24px] border border-primaryText/10 bg-white p-6 md:p-8 shadow-2xl animate-in zoom-in-95 duration-200 focus:outline-none text-primaryText">
             
             {/* Header Close */}
             <Dialog.Close asChild>
               <button 
-                className="absolute top-4 right-4 rounded-full p-2 text-brand-navy/60 hover:text-brand-navy hover:bg-brand-blue-light/60 transition-colors cursor-pointer focus:outline-none"
+                className="absolute top-4 right-4 rounded-full p-2 text-primaryText/60 hover:text-primaryText hover:bg-brand-blue-light/60 transition-colors cursor-pointer focus:outline-none"
                 aria-label="Close booking form"
               >
                 <X className="h-5 w-5" />
@@ -203,7 +187,7 @@ export default function ResultsPage() {
 
             <div className="mb-6">
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-teal">Service Booking</span>
-              <Dialog.Title className="text-xl font-bold text-brand-navy mt-1">
+              <Dialog.Title className="text-xl font-bold text-primaryText mt-1">
                 Contact: {activeBookService}
               </Dialog.Title>
             </div>
@@ -219,7 +203,7 @@ export default function ResultsPage() {
                   <CheckCircle2 className="h-10 w-10 stroke-[2.5]" />
                 </div>
                 <h4 className="font-extrabold text-lg">Thank you! Request Sent.</h4>
-                <p className="text-xs font-semibold text-brand-navy/70 leading-relaxed max-w-[340px]">
+                <p className="text-xs font-semibold text-primaryText/70 leading-relaxed max-w-[340px]">
                   {commMethods.includes('auslan') 
                     ? "We will contact you via an Auslan Video call (FaceTime / Zoom) at your preferred time."
                     : "We will contact you using your preferred written method (SMS or Email) shortly."}
@@ -237,7 +221,7 @@ export default function ResultsPage() {
                 
                 {/* Form fields */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="results-name-input" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                  <label htmlFor="results-name-input" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                     Your Name
                   </label>
                   <input
@@ -247,12 +231,12 @@ export default function ResultsPage() {
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="e.g. Robin"
-                    className="w-full rounded-xl border border-brand-navy/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="results-contact-input" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                  <label htmlFor="results-contact-input" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                     {commMethods.includes('auslan') ? "Video Call Number / FaceTime ID / Zoom Link" : "Mobile Phone (for SMS) or Email Address"}
                   </label>
                   <input
@@ -262,12 +246,12 @@ export default function ResultsPage() {
                     value={clientContact}
                     onChange={(e) => setClientContact(e.target.value)}
                     placeholder={commMethods.includes('auslan') ? "e.g. FaceTime id or link" : "e.g. 0400 000 000 or email"}
-                    className="w-full rounded-xl border border-brand-navy/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="results-time-input" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                  <label htmlFor="results-time-input" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                     Preferred contact time
                   </label>
                   <input
@@ -277,7 +261,7 @@ export default function ResultsPage() {
                     value={clientTime}
                     onChange={(e) => setClientTime(e.target.value)}
                     placeholder="e.g. Tomorrow morning around 10am"
-                    className="w-full rounded-xl border border-brand-navy/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
+                    className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-primary"
                   />
                 </div>
 

@@ -9,11 +9,11 @@ export default function Home() {
       {/* Hero Area */}
       <Hero />
       
-      {/* Service Cards Grid Section */}
-      <ServicesGrid />
-      
-      {/* Guided Support Journey & Wizard Navigator */}
+      {/* Guided Support Journey & Wizard Navigator (How it works) */}
       <JourneySection />
+      
+      {/* Service Cards Grid Section (Support tailored for your lifestyle) */}
+      <ServicesGrid />
     </>
   );
 }

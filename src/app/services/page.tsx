@@ -21,10 +21,10 @@ export default function ServicesIndexPage() {
         
         <div className="text-center md:text-left mb-10">
           <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Resource Directory</span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl mt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight text-primaryText sm:text-4xl mt-1">
             Deaf Support Directory
           </h1>
-          <p className="text-sm font-semibold text-brand-navy/60 max-w-[600px] leading-relaxed mt-2">
+          <p className="text-sm font-semibold text-primaryText/60 max-w-[600px] leading-relaxed mt-2">
             Browse professional mental health, counseling, and social connection groups supporting the Tasmanian Deaf community.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function ServicesIndexPage() {
             <Link
               key={service.id}
               href={`/services/${service.id}`}
-              className="group flex flex-col justify-between rounded-[24px] border border-brand-navy/10 bg-white p-6 shadow-sm hover:border-brand-teal/30 hover:shadow-lg transition-all focus:outline-none"
+              className="group flex flex-col justify-between rounded-[24px] border border-primaryText/10 bg-white p-6 shadow-sm hover:border-brand-teal/30 hover:shadow-lg transition-all focus:outline-none"
               aria-label={`${service.title}: ${service.tagline}`}
             >
               <div className="flex flex-col gap-6">
@@ -48,16 +48,16 @@ export default function ServicesIndexPage() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-xl font-bold tracking-tight text-brand-navy group-hover:text-brand-teal transition-colors">
+                  <h2 className="text-xl font-bold tracking-tight text-primaryText group-hover:text-brand-teal transition-colors">
                     {service.title}
                   </h2>
-                  <p className="text-xs font-medium text-brand-navy/70 leading-relaxed">
+                  <p className="text-xs font-medium text-primaryText/70 leading-relaxed">
                     {service.tagline}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-brand-navy/5 flex justify-between items-center text-xs font-bold text-brand-navy/60">
+              <div className="mt-6 pt-4 border-t border-primaryText/5 flex justify-between items-center text-xs font-bold text-primaryText/60">
                 <span className="bg-brand-blue-light/50 px-2.5 py-1 rounded-md border border-brand-blue-light/35">{service.delivery}</span>
                 <span className="flex items-center gap-1 text-brand-teal group-hover:translate-x-0.5 transition-transform">
                   Read Details

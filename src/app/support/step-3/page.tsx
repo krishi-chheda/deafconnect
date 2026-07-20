@@ -70,12 +70,12 @@ export default function Step3Page() {
           <div className="flex-1 w-full">
             {/* Header titles */}
             <div className="text-center md:text-left mb-8">
-              <h1 className={`font-extrabold text-brand-navy tracking-tight leading-tight ${
+              <h1 className={`font-extrabold text-primaryText tracking-tight leading-tight ${
                 isEasyRead ? 'text-3xl sm:text-4xl mb-4' : 'text-2xl sm:text-3xl mb-2'
               }`}>
                 {activeData.step3.title}
               </h1>
-              <p className={`font-medium text-brand-navy/60 ${isEasyRead ? 'text-lg' : 'text-sm'}`}>
+              <p className={`font-medium text-primaryText/60 ${isEasyRead ? 'text-lg' : 'text-sm'}`}>
                 {activeData.step3.subtitle}
               </p>
             </div>

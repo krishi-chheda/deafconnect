@@ -96,7 +96,7 @@ export default function AccessibilitySelector({ selected, onChange }: Accessibil
 
   return (
     <div className="flex flex-col gap-3">
-      <span className="text-[14px] font-bold text-brand-navy/60 uppercase tracking-wider">
+      <span className="text-[14px] font-bold text-primaryText/60 uppercase tracking-wider">
         Choose how you access information
       </span>
       
@@ -122,16 +122,16 @@ export default function AccessibilitySelector({ selected, onChange }: Accessibil
                 whileTap={{ scale: 0.98 }}
                 className={`flex items-center gap-3.5 px-5 py-4 rounded-[16px] border-[2px] transition-all duration-300 text-left ${
                   isSelected 
-                    ? 'border-brand-teal bg-brand-teal/5 text-brand-navy shadow-sm' 
-                    : 'border-brand-navy/10 bg-white text-brand-navy/80 hover:border-brand-teal/40 hover:text-brand-navy'
+                    ? 'bg-[#EAF8FB] border-[#55C3D9] text-[#1C2544] shadow-sm' 
+                    : 'bg-white border-[#DCE7EE] text-[#1C2544] hover:border-[#55C3D9]/60'
                 }`}
               >
                 <div className={`transition-colors duration-300 ${
-                  isSelected ? 'text-brand-teal' : 'text-brand-navy/60 group-hover:text-brand-teal'
+                  isSelected ? 'text-[#55C3D9]' : 'text-[#1C2544]/60 group-hover:text-[#55C3D9]'
                 }`}>
                   {option.icon}
                 </div>
-                <span className="text-[16px] font-bold tracking-tight">
+                <span className="text-[16px] font-bold tracking-tight text-[#1C2544]">
                   {option.title}
                 </span>
               </motion.div>

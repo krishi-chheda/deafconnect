@@ -14,12 +14,12 @@ export default function AboutPage() {
       <div className="mx-auto max-w-[1000px] px-6 sm:px-8 py-12 md:py-16" id="main-content">
         
         {/* Header titles */}
-        <div className="text-center md:text-left mb-10 border-b border-brand-navy/10 pb-6">
+        <div className="text-center md:text-left mb-10 border-b border-primaryText/10 pb-6">
           <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Project Background</span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl mt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight text-primaryText sm:text-4xl mt-1">
             About Deaf Connect Tasmania
           </h1>
-          <p className="text-sm font-semibold text-brand-navy/60 leading-relaxed mt-2">
+          <p className="text-sm font-semibold text-primaryText/60 leading-relaxed mt-2">
             An accessible navigation platform helping Deaf Tasmanians find suitable mental health support.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function AboutPage() {
         {/* Disclaimer Callout Box */}
         <div className="rounded-[20px] bg-brand-coral/5 border-[2px] border-brand-coral/20 p-6 flex gap-4 items-start mb-10">
           <Info className="h-6 w-6 text-brand-coral shrink-0 mt-0.5" aria-hidden="true" />
-          <div className="flex flex-col gap-1.5 text-brand-navy">
+          <div className="flex flex-col gap-1.5 text-primaryText">
             <h2 className="font-extrabold text-[16px] uppercase tracking-wide text-brand-coral">Educational Prototype Disclaimer</h2>
             <p className="text-xs font-semibold leading-relaxed">
               This website is an educational prototype developed for the **Monash Innovation Guarantee (MIG)** in collaboration with the **Mental Health Council of Tasmania (MHCT)**. 
@@ -39,10 +39,10 @@ export default function AboutPage() {
         </div>
 
         {/* Core Project Details */}
-        <div className="flex flex-col gap-8 text-brand-navy/85 font-medium leading-relaxed text-sm sm:text-base">
+        <div className="flex flex-col gap-8 text-primaryText/85 font-medium leading-relaxed text-sm sm:text-base">
           
           <div className="flex flex-col gap-3">
-            <h3 className="text-xl font-extrabold text-brand-navy tracking-tight">Our Purpose</h3>
+            <h3 className="text-xl font-extrabold text-primaryText tracking-tight">Our Purpose</h3>
             <p>
               Finding the right mental health support is often challenging, but communication barriers double this difficulty for Deaf and hard-of-hearing Tasmanians. Many healthcare facilities lack sign-language options or direct interpretation guides, making primary bookings stressful.
             </p>
@@ -52,14 +52,14 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-xl font-extrabold text-brand-navy tracking-tight">The Monash Innovation Guarantee</h3>
+            <h3 className="text-xl font-extrabold text-primaryText tracking-tight">The Monash Innovation Guarantee</h3>
             <p>
               The Monash Innovation Guarantee is an experiential learning program bringing students and partners together to solve real-world problems. This application was conceptualized and coded to address specific needs flagged by mental health providers across Tasmania.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-xl font-extrabold text-brand-navy tracking-tight">Partners and Mentors</h3>
+            <h3 className="text-xl font-extrabold text-primaryText tracking-tight">Partners and Mentors</h3>
             <ul className="list-disc pl-5 flex flex-col gap-1 text-sm font-semibold">
               <li>**Monash University** (Student developer & designers)</li>
               <li>**Mental Health Council of Tasmania** (Mentorship & domain guidance)</li>

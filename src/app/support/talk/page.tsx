@@ -153,10 +153,10 @@ export default function TalkToSomeonePage() {
             <div className="rounded-[24px] bg-brand-blue-light/40 border border-brand-blue-light/35 p-8 sm:p-12 mb-12 flex flex-col md:flex-row gap-8 items-center justify-between">
               <div className="flex flex-col gap-4 max-w-[640px]">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Direct Consultations</span>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-navy leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primaryText leading-tight">
                   Talk to Someone
                 </h1>
-                <p className="text-base font-semibold text-brand-navy/70 leading-relaxed">
+                <p className="text-base font-semibold text-primaryText/70 leading-relaxed">
                   Choose the communication channel that works best for you. We will recommend organizations and let you request callbacks.
                 </p>
               </div>
@@ -173,10 +173,10 @@ export default function TalkToSomeonePage() {
             {/* Conversational Methods Selector Container */}
             <div className="mb-12">
               <div className="text-center md:text-left mb-6">
-                <h2 className="text-xl font-extrabold text-brand-navy">
+                <h2 className="text-xl font-extrabold text-primaryText">
                   Step 1: Choose how you want to communicate
                 </h2>
-                <p className="text-xs font-semibold text-brand-navy/55 mt-1">
+                <p className="text-xs font-semibold text-primaryText/55 mt-1">
                   Select one option to see recommended organizations and callback support.
                 </p>
               </div>
@@ -195,12 +195,12 @@ export default function TalkToSomeonePage() {
                       className={`p-5 rounded-2xl border-2 text-center flex flex-col items-center justify-center gap-3 transition-all cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-coral/30 ${
                         isSelected 
                           ? 'border-brand-coral bg-brand-coral/[0.06] ring-1 ring-brand-coral shadow-sm scale-102' 
-                          : 'border-brand-navy/10 bg-white hover:border-brand-teal/40'
+                          : 'border-primaryText/10 bg-white hover:border-brand-teal/40'
                       }`}
                     >
                       <span className="text-3xl" role="img" aria-hidden="true">{method.icon}</span>
                       <div className="flex flex-col gap-0.5">
-                        <span className="text-xs font-extrabold text-brand-navy leading-tight">{method.label}</span>
+                        <span className="text-xs font-extrabold text-primaryText leading-tight">{method.label}</span>
                       </div>
                     </button>
                   );
@@ -223,25 +223,25 @@ export default function TalkToSomeonePage() {
                   {/* Left Column: Recommendations */}
                   <div className="lg:col-span-6 flex flex-col gap-6">
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-lg font-extrabold text-brand-navy">Recommended Services</h3>
-                      <p className="text-xs text-brand-navy/60 font-semibold">Specialised contacts supporting your chosen communication channel.</p>
+                      <h3 className="text-lg font-extrabold text-primaryText">Recommended Services</h3>
+                      <p className="text-xs text-primaryText/60 font-semibold">Specialised contacts supporting your chosen communication channel.</p>
                     </div>
 
                     <div className="flex flex-col gap-4" role="list">
                       {ORGANISATIONS[selectedMethod].map((org, index) => (
-                        <div key={index} className="rounded-xl border border-brand-navy/10 bg-white p-5 flex flex-col gap-3 shadow-sm" role="listitem">
+                        <div key={index} className="rounded-xl border border-primaryText/10 bg-white p-5 flex flex-col gap-3 shadow-sm" role="listitem">
                           <div className="flex items-center justify-between">
-                            <h4 className="text-sm font-extrabold text-brand-navy">{org.name}</h4>
+                            <h4 className="text-sm font-extrabold text-primaryText">{org.name}</h4>
                             <span className="text-[9px] font-extrabold uppercase tracking-wider text-brand-teal bg-brand-teal/10 px-2 py-0.5 rounded">
                               {org.channel}
                             </span>
                           </div>
                           
-                          <p className="text-xs font-medium text-brand-navy/70 leading-relaxed">
+                          <p className="text-xs font-medium text-primaryText/70 leading-relaxed">
                             {org.desc}
                           </p>
 
-                          <div className="flex flex-wrap gap-4 text-xs font-semibold text-brand-navy/80 pt-2 border-t border-brand-navy/5">
+                          <div className="flex flex-wrap gap-4 text-xs font-semibold text-primaryText/80 pt-2 border-t border-primaryText/5">
                             {org.phone && (
                               <a href={`tel:${org.phone}`} className="flex items-center gap-1.5 hover:text-brand-coral">
                                 <Phone className="h-3.5 w-3.5" />
@@ -283,8 +283,8 @@ export default function TalkToSomeonePage() {
                             className="flex flex-col gap-5"
                           >
                             <div className="flex flex-col gap-1">
-                              <h3 className="text-lg font-extrabold text-brand-navy">Request a Callback session</h3>
-                              <p className="text-xs text-brand-navy/60 font-semibold">We will coordinate with a deaf-aware support planner to contact you.</p>
+                              <h3 className="text-lg font-extrabold text-primaryText">Request a Callback session</h3>
+                              <p className="text-xs text-primaryText/60 font-semibold">We will coordinate with a deaf-aware support planner to contact you.</p>
                             </div>
 
                             {/* Name Input */}
@@ -295,8 +295,8 @@ export default function TalkToSomeonePage() {
                                 type="text"
                                 placeholder="Enter your name"
                                 {...register('name')}
-                                className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none transition-colors ${
-                                  errors.name ? 'border-red-500' : 'border-brand-navy/10'
+                                className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors ${
+                                  errors.name ? 'border-red-500' : 'border-primaryText/10'
                                 }`}
                               />
                               {errors.name && (
@@ -314,8 +314,8 @@ export default function TalkToSomeonePage() {
                                 type="text"
                                 placeholder="Enter SMS, mobile number or email address"
                                 {...register('contactDetail')}
-                                className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none transition-colors ${
-                                  errors.contactDetail ? 'border-red-500' : 'border-brand-navy/10'
+                                className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors ${
+                                  errors.contactDetail ? 'border-red-500' : 'border-primaryText/10'
                                 }`}
                               />
                               {errors.contactDetail && (
@@ -333,7 +333,7 @@ export default function TalkToSomeonePage() {
                                 placeholder="E.g., contact me in afternoon. I prefer Auslan video."
                                 rows={3}
                                 {...register('communicationNotes')}
-                                className="w-full p-4 rounded-lg border border-brand-navy/10 bg-white text-xs font-semibold text-brand-navy focus:border-brand-teal focus:outline-none transition-colors"
+                                className="w-full p-4 rounded-lg border border-primaryText/10 bg-white text-xs font-semibold text-primaryText focus:border-brand-teal focus:outline-none transition-colors"
                               />
                             </div>
 
@@ -344,7 +344,7 @@ export default function TalkToSomeonePage() {
                               className={`w-full h-12 flex items-center justify-center rounded-full text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer ${
                                 isValid 
                                   ? 'bg-brand-coral text-white hover:bg-brand-coral-hover shadow-md hover:scale-101' 
-                                  : 'bg-brand-navy/10 text-brand-navy/35 cursor-not-allowed'
+                                  : 'bg-primaryText/10 text-primaryText/35 cursor-not-allowed'
                               }`}
                             >
                               Request Contact
@@ -359,14 +359,14 @@ export default function TalkToSomeonePage() {
                           >
                             <CheckCircle className="h-16 w-16 text-emerald-500 animate-bounce" />
                             <div className="flex flex-col gap-1.5">
-                              <h3 className="text-xl font-extrabold text-brand-navy">Request Received!</h3>
-                              <p className="text-xs text-brand-navy/60 font-semibold max-w-[340px] leading-relaxed">
+                              <h3 className="text-xl font-extrabold text-primaryText">Request Received!</h3>
+                              <p className="text-xs text-primaryText/60 font-semibold max-w-[340px] leading-relaxed">
                                 Thank you. A Deaf Connect support officer will reach out to you using your preferred channel within 24 hours.
                               </p>
                             </div>
                               <button
                                 onClick={() => setFormSubmitted(false)}
-                                className="mt-2 h-10 px-6 rounded-full border border-brand-navy/20 text-xs font-bold text-brand-navy hover:bg-white transition-colors"
+                                className="mt-2 h-10 px-6 rounded-full border border-primaryText/20 text-xs font-bold text-primaryText hover:bg-white transition-colors"
                               >
                                 Send Another Request
                               </button>

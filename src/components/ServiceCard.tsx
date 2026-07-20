@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { useAccessibility } from '@/context/AccessibilityContext';
+import Button from '@/components/ui/Button';
+
 interface ServiceCardProps {
   imageSrc: string;
   imageAlt: string;
@@ -16,10 +19,13 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ imageSrc, imageAlt, title, description, href, isUrgent = false }: ServiceCardProps) {
+  const { accessibilityMode } = useAccessibility();
+  const isPlainLanguage = accessibilityMode === 'plainLanguage';
+
   return (
     <Link 
       href={href}
-      className={`group relative flex flex-col justify-between rounded-[24px] border border-brand-navy/10 bg-white p-6 transition-all duration-300 hover:border-brand-teal/30 hover:shadow-lg focus:outline-none h-full ${
+      className={`group relative flex flex-col justify-between rounded-[24px] border border-primaryText/10 bg-white p-6 transition-all duration-300 hover:border-brand-teal/30 hover:shadow-lg focus:outline-none h-full ${
         isUrgent ? 'ring-2 ring-brand-coral/20 hover:ring-brand-coral/40' : ''
       }`}
       aria-label={`${title}: ${description}. Click to navigate.`}
@@ -34,35 +40,43 @@ export function ServiceCard({ imageSrc, imageAlt, title, description, href, isUr
       {/* Top Half: Illustration and Text */}
       <div className="flex flex-col gap-6">
         
-        {/* Illustration Container */}
-        <div className="relative w-full aspect-[4/3] rounded-2xl bg-brand-blue-light/30 flex items-center justify-center overflow-hidden">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
+        {/* Illustration Container (hidden in Plain Language mode) */}
+        {!isPlainLanguage && (
+          <div className="relative w-full aspect-[4/3] rounded-2xl bg-brand-blue-light/30 flex items-center justify-center overflow-hidden hide-in-plain-language">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        )}
 
         {/* Text Details */}
         <div className="flex flex-col gap-2 text-center md:text-left">
-          <h3 className="text-xl font-bold tracking-tight text-brand-navy group-hover:text-brand-teal transition-colors">
+          <h3 className="text-xl font-bold tracking-tight text-primaryText group-hover:text-brand-teal transition-colors">
             {title}
           </h3>
-          <p className="text-[14px] font-medium leading-relaxed text-brand-navy/70">
+          <p className="text-[14px] font-medium leading-relaxed text-primaryText/70">
             {description}
           </p>
         </div>
       </div>
 
-      {/* Bottom Half: Orange/Coral Animated Arrow */}
-      <div className="flex justify-center md:justify-start mt-6 pt-4 border-t border-brand-navy/5">
-        <div 
-          className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-coral/20 bg-brand-coral/5 text-brand-coral transition-all duration-300 group-hover:bg-brand-coral-hover group-hover:text-white"
-          aria-hidden="true"
-        >
-          <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </div>
+      {/* Bottom Action Area */}
+      <div className="flex justify-center md:justify-start mt-6 pt-4 border-t border-primaryText/5">
+        {isPlainLanguage ? (
+          <Button variant="secondary" size="sm">
+            Learn More
+          </Button>
+        ) : (
+          <div 
+            className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-coral/20 bg-brand-coral/5 text-brand-coral transition-all duration-300 group-hover:bg-brand-coral-hover group-hover:text-white hide-in-plain-language"
+            aria-hidden="true"
+          >
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
+        )}
       </div>
     </Link>
   );
@@ -107,7 +121,7 @@ export default function ServicesGrid() {
   return (
     <section className="mx-auto max-w-[1440px] px-6 sm:px-8 py-12" id="support">
       <div className="flex flex-col gap-4 mb-10 text-center md:text-left">
-        <h2 className="text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
+        <h2 className="text-2xl font-extrabold tracking-tight text-primaryText sm:text-3xl">
           Support tailored for your lifestyle
         </h2>
         <p className="text-[16px] font-semibold text-brand-teal max-w-[600px] leading-relaxed">

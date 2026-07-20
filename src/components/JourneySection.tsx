@@ -28,10 +28,10 @@ export default function JourneySection() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           {/* Left Block */}
           <div className="flex flex-col gap-3 max-w-[620px]">
-            <h2 className="text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-primaryText sm:text-4xl">
               Not Sure Where to Start?
             </h2>
-            <p className="text-base sm:text-lg font-medium text-brand-navy/70 leading-relaxed">
+            <p className="text-base sm:text-lg font-medium text-primaryText/70 leading-relaxed">
               Answer a few simple questions and we'll guide you to services that match your communication styles and health goals.
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function JourneySection() {
               <ChevronRight className="h-5 w-5" />
             </Link>
 
-            <div className="flex items-center gap-2 text-brand-navy/60 self-center lg:self-start">
+            <div className="flex items-center gap-2 text-primaryText/60 self-center lg:self-start">
               <Clock className="h-4 w-4 shrink-0 text-brand-teal" />
               <span className="text-[13px] font-semibold text-center sm:text-left leading-normal">
                 Takes 1–2 minutes. No personal information required.
@@ -60,7 +60,7 @@ export default function JourneySection() {
 
       {/* 3 Step Timeline Flow */}
       <div className="flex flex-col gap-6 text-center mb-12">
-        <h3 className="text-2xl font-bold tracking-tight text-brand-navy">How it works</h3>
+        <h3 className="text-2xl font-bold tracking-tight text-primaryText">How it works</h3>
         <p className="text-sm font-semibold text-brand-teal uppercase tracking-widest">A simple 3-step timeline to guide you</p>
       </div>
 
@@ -75,7 +75,7 @@ export default function JourneySection() {
             </span>
             
             {/* Illustration */}
-            <div className="relative h-44 w-44 rounded-2xl bg-white border border-brand-navy/5 flex items-center justify-center p-4 shadow-sm">
+            <div className="relative h-44 w-44 rounded-2xl bg-white border border-primaryText/5 flex items-center justify-center p-4 shadow-sm hide-in-plain-language">
               <Image
                 src="/illustrations/step1_thinking.png"
                 alt="Illustration of a person thinking, hand on chin, representing telling us your support needs"
@@ -84,7 +84,7 @@ export default function JourneySection() {
               />
             </div>
           </div>
-          <h4 className="text-lg font-extrabold text-brand-navy tracking-tight">
+          <h4 className="text-lg font-extrabold text-primaryText tracking-tight">
             Tell us what you need
           </h4>
         </div>
@@ -110,7 +110,7 @@ export default function JourneySection() {
               2
             </span>
             
-            <div className="relative h-44 w-44 rounded-2xl bg-white border border-brand-navy/5 flex items-center justify-center p-4 shadow-sm">
+            <div className="relative h-44 w-44 rounded-2xl bg-white border border-primaryText/5 flex items-center justify-center p-4 shadow-sm hide-in-plain-language">
               <Image
                 src="/illustrations/step2_communicate.png"
                 alt="Illustration of options for phone, signing, and checklist representing choosing communication channel"
@@ -119,7 +119,7 @@ export default function JourneySection() {
               />
             </div>
           </div>
-          <h4 className="text-lg font-extrabold text-brand-navy tracking-tight">
+          <h4 className="text-lg font-extrabold text-primaryText tracking-tight">
             Choose how you communicate
           </h4>
         </div>
@@ -145,7 +145,7 @@ export default function JourneySection() {
               3
             </span>
             
-            <div className="relative h-44 w-44 rounded-2xl bg-white border border-brand-navy/5 flex items-center justify-center p-4 shadow-sm">
+            <div className="relative h-44 w-44 rounded-2xl bg-white border border-primaryText/5 flex items-center justify-center p-4 shadow-sm hide-in-plain-language">
               <Image
                 src="/illustrations/step3_support.png"
                 alt="Illustration of a laptop showing checklists and a success check mark badge representing final support match results"
@@ -154,7 +154,7 @@ export default function JourneySection() {
               />
             </div>
           </div>
-          <h4 className="text-lg font-extrabold text-brand-navy tracking-tight">
+          <h4 className="text-lg font-extrabold text-primaryText tracking-tight">
             See suitable support
           </h4>
         </div>

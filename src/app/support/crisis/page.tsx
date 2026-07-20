@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Phone, ArrowRight, MessageSquare, ShieldAlert, MapPin, Eye, ExternalLink } from 'lucide-react';
+import { Phone, ShieldAlert, MapPin, ExternalLink } from 'lucide-react';
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
+import Button from "@/components/ui/Button";
+import Card, { CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 
 interface Hospital {
   name: string;
@@ -93,8 +95,8 @@ export default function CrisisSupportPage() {
               { name: "Crisis Support" }
             ]} />
 
-            {/* Emergency Red Warning Banner */}
-            <div className="rounded-[24px] border-4 border-brand-coral bg-brand-peach-light/40 p-8 sm:p-10 mb-12 flex flex-col md:flex-row gap-8 items-center justify-between shadow-sm relative overflow-hidden">
+            {/* Emergency Warning Banner Card */}
+            <Card variant="highlight" className="p-8 sm:p-10 mb-12 flex flex-col md:flex-row gap-8 items-center justify-between border-4 border-brand-coral">
               {/* Pulsing red side badge */}
               <div className="absolute top-0 left-0 bottom-0 w-2.5 bg-brand-coral" />
               
@@ -103,10 +105,10 @@ export default function CrisisSupportPage() {
                   <span className="h-2.5 w-2.5 rounded-full bg-brand-coral animate-ping shrink-0" />
                   <span className="text-xs font-extrabold uppercase tracking-widest text-brand-coral">Immediate Help Portal</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-navy leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primaryText leading-tight">
                   Urgent & Crisis Support
                 </h1>
-                <p className="text-base font-semibold text-brand-navy/70 leading-relaxed">
+                <p className="text-base font-semibold text-primaryText/70 leading-relaxed">
                   If you are in immediate danger or need urgent help, access these direct contacts. These services are free and available 24/7.
                 </p>
               </div>
@@ -118,92 +120,97 @@ export default function CrisisSupportPage() {
                   className="object-contain animate-pulse"
                 />
               </div>
-            </div>
+            </Card>
 
             {/* NRS Instructions Card */}
-            <div className="rounded-2xl border border-brand-teal/20 bg-brand-blue-light/25 p-6 mb-12 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+            <Card variant="outlined" className="p-6 mb-12 flex flex-col md:flex-row items-center gap-6">
               <div className="h-12 w-12 rounded-full bg-brand-teal/15 flex items-center justify-center shrink-0">
                 <ShieldAlert className="h-6 w-6 text-brand-teal" />
               </div>
               <div className="flex-1 flex flex-col gap-1">
                 <span className="text-xs font-extrabold text-brand-teal uppercase tracking-wider">How to Call 000 using the National Relay Service</span>
-                <p className="text-xs font-semibold text-brand-navy/70 leading-relaxed">
+                <p className="text-xs font-semibold text-primaryText/70 leading-relaxed">
                   If you need Police, Ambulance, or Fire: Open the National Relay Service (NRS), request a connection to <strong>"000"</strong>, and tell the operator your location and needs immediately.
                 </p>
               </div>
-              <a 
-                href="https://www.accesshub.gov.au/nrs-phone-numbers" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-full md:w-auto h-11 px-5 flex items-center justify-center gap-2 rounded-full bg-brand-teal text-white hover:bg-brand-teal/90 text-xs font-extrabold uppercase tracking-wider transition-colors shrink-0"
+              <Button
+                variant="teal"
+                size="md"
+                href="https://www.accesshub.gov.au/nrs-phone-numbers"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0"
               >
                 <span>NRS Relay Portal</span>
                 <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
+              </Button>
+            </Card>
 
-            {/* Core Helpline Boxes */}
+            {/* Core Helpline Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {emergencyContacts.map((contact, index) => {
                 const isPrimary = contact.type === 'primary';
                 return (
-                  <div 
-                    key={index} 
-                    className={`rounded-2xl p-6 flex flex-col justify-between gap-6 border-2 transition-all shadow-sm ${
-                      isPrimary 
-                        ? 'border-brand-coral bg-brand-peach-light/20 ring-1 ring-brand-coral/10' 
-                        : 'border-brand-navy/10 bg-white'
-                    }`}
+                  <Card
+                    key={index}
+                    variant={isPrimary ? "highlight" : "default"}
+                    className="p-6 flex flex-col justify-between gap-6"
                   >
                     <div className="flex flex-col gap-3">
                       <div className="flex items-center gap-2">
                         {isPrimary && <span className="h-2 w-2 rounded-full bg-brand-coral animate-pulse shrink-0" />}
-                        <h3 className="text-base font-extrabold text-brand-navy">{contact.name}</h3>
+                        <h3 className="text-base font-extrabold text-primaryText">{contact.name}</h3>
                       </div>
-                      <p className="text-xs font-semibold text-brand-navy/60 leading-relaxed">
+                      <p className="text-xs font-semibold text-primaryText/60 leading-relaxed">
                         {contact.desc}
                       </p>
                     </div>
 
                     <div className="flex flex-col gap-2.5">
                       {contact.phone && (
-                        <a 
-                          href={`tel:${contact.phone.replace(/\s+/g, '')}`} 
-                          className="w-full h-11 flex items-center justify-center gap-2 rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 text-xs font-extrabold transition-all"
+                        <Button
+                          variant={isPrimary ? "primary" : "secondary"}
+                          size="md"
+                          fullWidth
+                          href={`tel:${contact.phone.replace(/\s+/g, '')}`}
                         >
                           <Phone className="h-4 w-4 fill-current" />
                           <span>Call: {contact.phone}</span>
-                        </a>
+                        </Button>
                       )}
                       
                       {contact.sms && (
-                        <a 
-                          href={`sms:${contact.sms.replace(/\s+/g, '')}`} 
-                          className="w-full h-11 flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-extrabold transition-all"
+                        <Button
+                          variant="primary"
+                          size="md"
+                          fullWidth
+                          href={`sms:${contact.sms.replace(/\s+/g, '')}`}
                         >
                           <span>📱 Text: {contact.sms}</span>
-                        </a>
+                        </Button>
                       )}
 
                       {contact.url && (
-                        <a 
+                        <Button
+                          variant="outline"
+                          size="md"
+                          fullWidth
                           href={contact.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full h-11 flex items-center justify-center gap-2 rounded-full border-2 border-brand-teal/20 text-brand-teal hover:border-brand-teal text-xs font-extrabold transition-all"
                         >
                           <span>Online Access</span>
                           <ExternalLink className="h-3.5 w-3.5" />
-                        </a>
+                        </Button>
                       )}
                     </div>
-                  </div>
+                  </Card>
                 );
               })}
             </div>
 
             {/* Emergency Department Locator */}
-            <div className="rounded-[24px] border border-brand-navy/10 bg-brand-blue-light/5 p-8 sm:p-10 mb-16">
+            <Card variant="ghost" className="p-8 sm:p-10 mb-16">
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
@@ -211,13 +218,13 @@ export default function CrisisSupportPage() {
                 <div className="lg:col-span-6 flex flex-col gap-6">
                   <div className="flex flex-col gap-2">
                     <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Emergency Department Locator</span>
-                    <h2 className="text-2xl font-extrabold text-brand-navy">Find a Hospital Triage</h2>
-                    <p className="text-xs font-semibold text-brand-navy/60 leading-relaxed pr-2">
+                    <h2 className="text-2xl font-extrabold text-primaryText">Find a Hospital Triage</h2>
+                    <p className="text-xs font-semibold text-primaryText/60 leading-relaxed pr-2">
                       Select a Tasmanian hospital emergency department below to view address guidelines, triage phone numbers, and NRS dialing instructions.
                     </p>
                   </div>
 
-                  {/* Hospital Button List */}
+                  {/* Hospital Selector List */}
                   <div className="flex flex-col gap-2.5" role="list">
                     {HOSPITALS.map((hosp, index) => {
                       const isSelected = selectedHospital?.name === hosp.name;
@@ -225,16 +232,16 @@ export default function CrisisSupportPage() {
                         <button
                           key={index}
                           onClick={() => setSelectedHospital(hosp)}
-                          className={`w-full p-4 rounded-xl border-2 text-left flex items-center justify-between gap-4 transition-all focus:outline-none ${
+                          className={`w-full p-4 rounded-xl border-2 text-left flex items-center justify-between gap-4 transition-all focus:outline-none cursor-pointer ${
                             isSelected 
                               ? 'border-brand-coral bg-brand-coral/[0.05] ring-1 ring-brand-coral' 
-                              : 'border-brand-navy/10 bg-white hover:border-brand-teal/40'
+                              : 'border-primaryText/10 bg-white hover:border-brand-teal/40'
                           }`}
                           role="listitem"
                         >
                           <div className="flex flex-col">
-                            <span className="text-xs font-extrabold text-brand-navy">{hosp.name}</span>
-                            <span className="text-[10px] font-semibold text-brand-navy/55">{hosp.region}</span>
+                            <span className="text-xs font-extrabold text-primaryText">{hosp.name}</span>
+                            <span className="text-[10px] font-semibold text-primaryText/55">{hosp.region}</span>
                           </div>
                           <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 uppercase tracking-wider">
                             {hosp.wait}
@@ -245,17 +252,17 @@ export default function CrisisSupportPage() {
                   </div>
                 </div>
 
-                {/* Details card */}
+                {/* Facility Details card */}
                 <div className="lg:col-span-6">
                   {selectedHospital ? (
-                    <div className="rounded-2xl border-2 border-brand-coral/25 bg-white p-6 shadow-sm flex flex-col gap-5 animate-in fade-in slide-in-from-bottom-2">
-                      <div className="flex flex-col gap-1 pb-3 border-b border-brand-navy/5">
+                    <Card variant="default" className="p-6 border-2 border-brand-coral/25 flex flex-col gap-5 animate-in fade-in slide-in-from-bottom-2">
+                      <div className="flex flex-col gap-1 pb-3 border-b border-primaryText/5">
                         <span className="text-[9px] font-extrabold text-brand-coral uppercase tracking-wider">Selected Facility Details</span>
-                        <h3 className="text-base font-extrabold text-brand-navy">{selectedHospital.name}</h3>
+                        <h3 className="text-base font-extrabold text-primaryText">{selectedHospital.name}</h3>
                       </div>
 
                       {/* Map coordinates details */}
-                      <div className="flex flex-col gap-3 text-xs font-semibold text-brand-navy/85">
+                      <div className="flex flex-col gap-3 text-xs font-semibold text-primaryText/85">
                         <div className="flex items-center gap-2">
                           <MapPin className="h-4.5 w-4.5 text-brand-teal shrink-0" />
                           <span>{selectedHospital.address}</span>
@@ -271,42 +278,46 @@ export default function CrisisSupportPage() {
                         <span className="text-[9px] font-extrabold text-brand-teal uppercase tracking-widest block mb-1">
                           NRS Dialing Guide
                         </span>
-                        <p className="text-xs font-semibold text-brand-navy/70 leading-relaxed">
+                        <p className="text-xs font-semibold text-primaryText/70 leading-relaxed">
                           {selectedHospital.nrsGuide}
                         </p>
                       </div>
 
                       <div className="flex gap-3 mt-1">
-                        <a 
+                        <Button
+                          variant="secondary"
+                          size="md"
+                          fullWidth
                           href={`tel:${selectedHospital.phone.replace(/\s+/g, '')}`}
-                          className="flex-1 h-11 flex items-center justify-center gap-2 rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 text-xs font-bold transition-colors"
                         >
                           <Phone className="h-4 w-4 fill-current" />
                           <span>Call Triage</span>
-                        </a>
-                        <a 
-                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedHospital.address)}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="flex-1 h-11 flex items-center justify-center gap-2 rounded-full border-2 border-brand-navy/10 text-brand-navy hover:border-brand-navy/30 text-xs font-bold transition-all bg-white"
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          size="md"
+                          fullWidth
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedHospital.address)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <span>Get Directions</span>
-                        </a>
+                        </Button>
                       </div>
 
-                    </div>
+                    </Card>
                   ) : (
-                    <div className="rounded-2xl border-2 border-dashed border-brand-navy/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
+                    <Card variant="default" className="border-2 border-dashed border-primaryText/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
                       <span className="text-3xl">🏥</span>
-                      <span className="text-sm font-bold text-brand-navy">Select a Hospital Facility</span>
-                      <span className="text-xs text-brand-navy/55 max-w-[280px]">Click on any hospital on the left to view phone lines, maps directions, and triage instructions.</span>
-                    </div>
+                      <span className="text-sm font-bold text-primaryText">Select a Hospital Facility</span>
+                      <span className="text-xs text-primaryText/55 max-w-[280px]">Click on any hospital on the left to view phone lines, maps directions, and triage instructions.</span>
+                    </Card>
                   )}
                 </div>
 
               </div>
 
-            </div>
+            </Card>
 
           </div>
         </AnimatePage>

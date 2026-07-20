@@ -129,10 +129,10 @@ export default function CommunityPage() {
             <div className="rounded-[24px] bg-brand-blue-light/40 border border-brand-blue-light/35 p-8 sm:p-12 mb-12 flex flex-col md:flex-row gap-8 items-center justify-between">
               <div className="flex flex-col gap-4 max-w-[640px]">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Tasmanian Connection Hub</span>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-navy leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primaryText leading-tight">
                   Community Connection
                 </h1>
-                <p className="text-base font-semibold text-brand-navy/70 leading-relaxed">
+                <p className="text-base font-semibold text-primaryText/70 leading-relaxed">
                   Find peer support groups, upcoming social meetups, educational workshops, local Deaf organisations, and active volunteer opportunities.
                 </p>
               </div>
@@ -156,14 +156,14 @@ export default function CommunityPage() {
                 <div className="flex flex-col gap-2">
                   <label htmlFor="event-search" className="text-xs font-extrabold uppercase tracking-wider text-brand-teal">Search Calendar</label>
                   <div className="relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-navy/30" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primaryText/30" />
                     <input
                       id="event-search"
                       type="text"
                       placeholder="Search meetups, workshops..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full h-12 pl-11 pr-4 rounded-xl border-2 border-brand-navy/10 bg-white text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none transition-colors"
+                      className="w-full h-12 pl-11 pr-4 rounded-xl border-2 border-primaryText/10 bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -174,14 +174,14 @@ export default function CommunityPage() {
                     <div className="flex flex-col items-center text-center gap-4 py-6">
                       <CheckCircle className="h-14 w-14 text-emerald-500 animate-bounce" />
                       <div className="flex flex-col gap-1">
-                        <h3 className="text-lg font-extrabold text-brand-navy">Registration Successful</h3>
-                        <p className="text-xs text-brand-navy/60 font-semibold max-w-[280px]">
+                        <h3 className="text-lg font-extrabold text-primaryText">Registration Successful</h3>
+                        <p className="text-xs text-primaryText/60 font-semibold max-w-[280px]">
                           Thank you for registering! A coordinator will email you soon to discuss active volunteer roles.
                         </p>
                       </div>
                       <button
                         onClick={() => setVolunteerSubmitted(false)}
-                        className="mt-2 h-10 px-5 rounded-full border border-brand-navy/20 text-xs font-bold text-brand-navy hover:bg-white transition-colors"
+                        className="mt-2 h-10 px-5 rounded-full border border-primaryText/20 text-xs font-bold text-primaryText hover:bg-white transition-colors"
                       >
                         Register Another Account
                       </button>
@@ -189,8 +189,8 @@ export default function CommunityPage() {
                   ) : (
                     <form onSubmit={handleSubmit(onVolunteerSubmit)} className="flex flex-col gap-4">
                       <div className="flex flex-col gap-1">
-                        <h3 className="text-base font-extrabold text-brand-navy">Become a Community Volunteer</h3>
-                        <p className="text-[11px] text-brand-navy/60 font-semibold leading-relaxed">
+                        <h3 className="text-base font-extrabold text-primaryText">Become a Community Volunteer</h3>
+                        <p className="text-[11px] text-primaryText/60 font-semibold leading-relaxed">
                           Help practice Auslan, assist in meetups, or support coordinate local events. Fill out details to apply.
                         </p>
                       </div>
@@ -203,8 +203,8 @@ export default function CommunityPage() {
                           type="text"
                           placeholder="Your Name"
                           {...register('fullName')}
-                          className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none bg-white ${
-                            errors.fullName ? 'border-red-500' : 'border-brand-navy/10'
+                          className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none bg-white ${
+                            errors.fullName ? 'border-red-500' : 'border-primaryText/10'
                           }`}
                         />
                         {errors.fullName && <span className="text-[10px] text-red-500">{errors.fullName.message}</span>}
@@ -218,8 +218,8 @@ export default function CommunityPage() {
                           type="email"
                           placeholder="name@example.com"
                           {...register('emailAddress')}
-                          className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-brand-navy focus:border-brand-teal focus:outline-none bg-white ${
-                            errors.emailAddress ? 'border-red-500' : 'border-brand-navy/10'
+                          className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none bg-white ${
+                            errors.emailAddress ? 'border-red-500' : 'border-primaryText/10'
                           }`}
                         />
                         {errors.emailAddress && <span className="text-[10px] text-red-500">{errors.emailAddress.message}</span>}
@@ -231,8 +231,8 @@ export default function CommunityPage() {
                         <select
                           id="auslanSkill"
                           {...register('auslanSkill')}
-                          className={`h-10 px-3 rounded-lg border text-xs font-bold text-brand-navy focus:border-brand-teal bg-white ${
-                            errors.auslanSkill ? 'border-red-500' : 'border-brand-navy/10'
+                          className={`h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal bg-white ${
+                            errors.auslanSkill ? 'border-red-500' : 'border-primaryText/10'
                           }`}
                         >
                           <option value="">Select skill level...</option>
@@ -250,7 +250,7 @@ export default function CommunityPage() {
                         className={`w-full h-11 flex items-center justify-center rounded-full text-xs font-extrabold uppercase tracking-wider transition-colors cursor-pointer ${
                           isValid 
                             ? 'bg-brand-coral text-white hover:bg-brand-coral-hover shadow-sm' 
-                            : 'bg-brand-navy/10 text-brand-navy/35 cursor-not-allowed'
+                            : 'bg-primaryText/10 text-primaryText/35 cursor-not-allowed'
                         }`}
                       >
                         Submit Application
@@ -266,7 +266,7 @@ export default function CommunityPage() {
               <div className="lg:col-span-7 flex flex-col gap-6">
                 
                 {/* Category tab chips */}
-                <div className="flex flex-wrap gap-2 border-b border-brand-navy/10 pb-4">
+                <div className="flex flex-wrap gap-2 border-b border-primaryText/10 pb-4">
                   {[
                     { id: 'all', label: 'All Calendar' },
                     { id: 'social', label: 'Social Meetups' },
@@ -280,7 +280,7 @@ export default function CommunityPage() {
                       className={`px-4 py-2 rounded-full text-xs font-bold transition-all focus:outline-none ${
                         selectedFilter === tab.id
                           ? 'bg-brand-teal text-white shadow-sm'
-                          : 'bg-brand-blue-light/40 border border-brand-navy/5 text-brand-navy/70 hover:bg-brand-blue-light/70'
+                          : 'bg-brand-blue-light/40 border border-primaryText/5 text-primaryText/70 hover:bg-brand-blue-light/70'
                       }`}
                     >
                       {tab.label}
@@ -288,7 +288,7 @@ export default function CommunityPage() {
                   ))}
                 </div>
 
-                <div className="text-xs font-semibold text-brand-navy/50">
+                <div className="text-xs font-semibold text-primaryText/50">
                   Showing {filteredEvents.length} active connection pathways
                 </div>
 
@@ -298,7 +298,7 @@ export default function CommunityPage() {
                     filteredEvents.map((ev, index) => (
                       <div 
                         key={index} 
-                        className="rounded-2xl border border-brand-navy/10 bg-white p-6 shadow-sm flex flex-col justify-between gap-4 hover:shadow-md hover:border-brand-teal/20 transition-all duration-300"
+                        className="rounded-2xl border border-primaryText/10 bg-white p-6 shadow-sm flex flex-col justify-between gap-4 hover:shadow-md hover:border-brand-teal/20 transition-all duration-300"
                         role="listitem"
                       >
                         
@@ -315,14 +315,14 @@ export default function CommunityPage() {
                             )}
                           </div>
 
-                          <h3 className="text-base font-extrabold text-brand-navy">{ev.title}</h3>
-                          <p className="text-xs font-semibold text-brand-navy/60 leading-relaxed pr-2">
+                          <h3 className="text-base font-extrabold text-primaryText">{ev.title}</h3>
+                          <p className="text-xs font-semibold text-primaryText/60 leading-relaxed pr-2">
                             {ev.desc}
                           </p>
                         </div>
 
                         {/* Calendar details */}
-                        <div className="flex flex-wrap gap-4 text-[11px] font-bold text-brand-navy/75 pt-3 border-t border-brand-navy/5">
+                        <div className="flex flex-wrap gap-4 text-[11px] font-bold text-primaryText/75 pt-3 border-t border-primaryText/5">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-3.5 w-3.5 text-brand-teal shrink-0" />
                             <span>{ev.date}</span>
@@ -347,7 +347,7 @@ export default function CommunityPage() {
                       </div>
                     ))
                   ) : (
-                    <div className="rounded-2xl border border-dashed border-brand-navy/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
+                    <div className="rounded-2xl border border-dashed border-primaryText/20 bg-brand-blue-light/5 p-12 text-center flex flex-col items-center gap-3">
                       <span className="text-3xl">📅</span>
                       <span className="text-sm font-bold text-brand-navy">No Events Scheduled</span>
                       <span className="text-xs text-brand-navy/55 max-w-[280px]">Try searching other filters or checking back next week.</span>

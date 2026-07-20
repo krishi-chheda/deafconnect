@@ -45,7 +45,7 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
     <div className="w-full max-w-[340px] mx-auto lg:mx-0 shrink-0 flex flex-col gap-3">
       
       {/* Video Webcam Frame Container */}
-      <div className="relative aspect-square w-full rounded-[24px] border-2 border-brand-teal/30 bg-slate-900 overflow-hidden shadow-md flex flex-col justify-between">
+      <div className="relative aspect-square w-full rounded-[24px] border-2 border-brand-teal/30 bg-slate-900 dark-surface text-white overflow-hidden shadow-md flex flex-col justify-between">
         
         {/* Camera Corner Focus Frame Overlays [ ] */}
         <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-lg" aria-hidden="true">

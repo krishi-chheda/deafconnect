@@ -80,11 +80,11 @@ export default function Hero() {
           {/* Left Column */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-navy leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-primaryText leading-[1.1]">
                 How can we support you?
               </h1>
               
-              <p className="text-lg sm:text-xl font-medium text-brand-navy/70 leading-relaxed max-w-[580px]">
+              <p className="text-lg sm:text-xl font-medium text-primaryText/70 leading-relaxed max-w-[580px]">
                 Find accessible mental health and community support for Deaf people in Tasmania.
               </p>
             </div>
@@ -101,7 +101,7 @@ export default function Hero() {
             {isInlineVideoActive ? (
               /* Inline video player container matching the illustration aspect-ratio */
               <div 
-                className="relative w-full max-w-[400px] aspect-[4/3] rounded-[24px] bg-slate-950 border-2 border-brand-teal/30 overflow-hidden flex flex-col justify-between shadow-lg"
+                className="relative w-full max-w-[400px] aspect-[4/3] rounded-[24px] bg-slate-950 dark-surface text-white border-2 border-brand-teal/30 overflow-hidden flex flex-col justify-between shadow-lg"
                 role="region"
                 aria-label="Auslan Welcome Video Player"
               >
@@ -218,7 +218,7 @@ export default function Hero() {
                   repeat: Infinity, 
                   ease: "easeInOut"
                 }}
-                className="relative w-full max-w-[400px] aspect-[4/3] flex items-center justify-center animate-in fade-in"
+                className="relative w-full max-w-[400px] aspect-[4/3] flex items-center justify-center animate-in fade-in hide-in-plain-language"
               >
                 <Image
                   src="/illustrations/hero_signing.png"

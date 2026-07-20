@@ -153,7 +153,7 @@ export default function ServicePage({ params }: ServicePageProps) {
           }`}>
             
             {/* Service Banner Block */}
-            <div className="rounded-[24px] border border-brand-navy/10 overflow-hidden bg-white shadow-sm flex flex-col md:flex-row items-center gap-6 p-6">
+            <div className="rounded-[24px] border border-primaryText/10 overflow-hidden bg-white shadow-sm flex flex-col md:flex-row items-center gap-6 p-6">
               <div className="relative w-full md:w-[240px] aspect-[4/3] rounded-xl bg-brand-blue-light/30 flex items-center justify-center shrink-0">
                 <Image
                   src={service.imageSrc}
@@ -164,7 +164,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               </div>
 
               <div className="flex flex-col gap-3 text-center md:text-left">
-                <h1 className={`font-extrabold text-brand-navy tracking-tight leading-none ${
+                <h1 className={`font-extrabold text-primaryText tracking-tight leading-none ${
                   isEasyRead ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'
                 }`}>
                   {service.title}
@@ -172,7 +172,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <p className={`font-bold text-brand-teal ${isEasyRead ? 'text-lg' : 'text-sm'}`}>
                   {service.tagline}
                 </p>
-                <div className="flex flex-wrap gap-4 text-xs font-bold text-brand-navy/70 mt-2 justify-center md:justify-start">
+                <div className="flex flex-wrap gap-4 text-xs font-bold text-primaryText/70 mt-2 justify-center md:justify-start">
                   <span className="flex items-center gap-1 bg-brand-blue-light/50 px-3 py-1.5 rounded-lg border border-brand-blue-light/40">
                     <Globe className="h-4 w-4 text-brand-teal" />
                     {service.delivery}
@@ -191,12 +191,12 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* Overview Section */}
             <div className="flex flex-col gap-4">
-              <h2 className={`font-extrabold text-brand-navy border-b border-brand-navy/10 pb-2 ${
+              <h2 className={`font-extrabold text-primaryText border-b border-primaryText/10 pb-2 ${
                 isEasyRead ? 'text-2xl' : 'text-xl'
               }`}>
                 Overview
               </h2>
-              <p className={`font-medium text-brand-navy/75 leading-relaxed ${
+              <p className={`font-medium text-primaryText/75 leading-relaxed ${
                 isEasyRead ? 'text-lg' : 'text-[15px]'
               }`}>
                 {service.longDescription}
@@ -205,7 +205,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* Accessibility Features */}
             <div className="flex flex-col gap-4">
-              <h2 className={`font-extrabold text-brand-navy border-b border-brand-navy/10 pb-2 ${
+              <h2 className={`font-extrabold text-primaryText border-b border-primaryText/10 pb-2 ${
                 isEasyRead ? 'text-2xl' : 'text-xl'
               }`}>
                 Accessibility Features
@@ -214,7 +214,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 {service.accessibilityFeatures.map((feat, index) => (
                   <li key={index} className="flex items-start gap-2.5">
                     <CheckCircle className="h-5 w-5 text-brand-teal shrink-0 mt-0.5" aria-hidden="true" />
-                    <span className={`font-medium text-brand-navy/80 ${isEasyRead ? 'text-[16px]' : 'text-sm'}`}>
+                    <span className={`font-medium text-primaryText/80 ${isEasyRead ? 'text-[16px]' : 'text-sm'}`}>
                       {feat}
                     </span>
                   </li>
@@ -224,7 +224,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* Communication channels */}
             <div className="flex flex-col gap-4">
-              <h2 className={`font-extrabold text-brand-navy border-b border-brand-navy/10 pb-2 ${
+              <h2 className={`font-extrabold text-primaryText border-b border-primaryText/10 pb-2 ${
                 isEasyRead ? 'text-2xl' : 'text-xl'
               }`}>
                 Supported Communication Methods
@@ -233,7 +233,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 {service.communication.map((comm) => (
                   <div 
                     key={comm} 
-                    className="flex items-center gap-2 rounded-xl bg-brand-blue-light/35 border border-brand-teal/20 px-4 py-2 text-brand-navy"
+                    className="flex items-center gap-2 rounded-xl bg-brand-blue-light/35 border border-brand-teal/20 px-4 py-2 text-primaryText"
                   >
                     {getCommIcon(comm)}
                     <span className={`font-bold capitalize ${isEasyRead ? 'text-sm' : 'text-xs'}`}>
@@ -253,8 +253,8 @@ export default function ServicePage({ params }: ServicePageProps) {
             <div className="rounded-[24px] border-[2px] border-brand-teal/20 bg-brand-blue-light/10 p-6 md:p-8 shadow-sm flex flex-col gap-6">
               
               <div>
-                <h2 className="text-xl font-extrabold text-brand-navy tracking-tight">Book or Contact</h2>
-                <p className="text-xs font-medium text-brand-navy/60 mt-1">
+                <h2 className="text-xl font-extrabold text-primaryText tracking-tight">Book or Contact</h2>
+                <p className="text-xs font-medium text-primaryText/60 mt-1">
                   Submit a request and we will connect you using your preferred format.
                 </p>
               </div>
@@ -265,7 +265,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <CheckCircle className="h-7 w-7" />
                   </div>
                   <h4 className="font-extrabold text-[16px]">Request Submitted!</h4>
-                  <p className="text-xs font-semibold text-brand-navy/70 leading-relaxed">
+                  <p className="text-xs font-semibold text-primaryText/70 leading-relaxed">
                     We will get back to you using your preferred contact details shortly.
                   </p>
                   <button 
@@ -280,7 +280,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                   
                   {/* Name field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="details-name" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                    <label htmlFor="details-name" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                       Your Name
                     </label>
                     <input
@@ -290,7 +290,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                       aria-invalid={errors.name ? "true" : "false"}
                       aria-describedby={errors.name ? "name-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/50 ${
-                        errors.name ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-brand-navy/15 focus:border-brand-teal'
+                        errors.name ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-primaryText/15 focus:border-brand-teal'
                       }`}
                       placeholder="Robin"
                     />
@@ -304,7 +304,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
                   {/* Contact field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="details-contact" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                    <label htmlFor="details-contact" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                       How should we reach you?
                     </label>
                     <input
@@ -314,7 +314,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                       aria-invalid={errors.contact ? "true" : "false"}
                       aria-describedby={errors.contact ? "contact-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/50 ${
-                        errors.contact ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-brand-navy/15 focus:border-brand-teal'
+                        errors.contact ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-primaryText/15 focus:border-brand-teal'
                       }`}
                       placeholder="e.g. FaceTime ID, SMS, or Email"
                     />
@@ -328,7 +328,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
                   {/* Time field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="details-time" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                    <label htmlFor="details-time" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                       Preferred Day or Time
                     </label>
                     <input
@@ -338,7 +338,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                       aria-invalid={errors.time ? "true" : "false"}
                       aria-describedby={errors.time ? "time-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/50 ${
-                        errors.time ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-brand-navy/15 focus:border-brand-teal'
+                        errors.time ? 'border-brand-coral bg-brand-coral/5 focus:ring-brand-coral/50' : 'border-primaryText/15 focus:border-brand-teal'
                       }`}
                       placeholder="e.g. Wednesday morning"
                     />
@@ -352,14 +352,14 @@ export default function ServicePage({ params }: ServicePageProps) {
 
                   {/* Message field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="details-msg" className="text-xs font-extrabold uppercase tracking-wider text-brand-navy/60">
+                    <label htmlFor="details-msg" className="text-xs font-extrabold uppercase tracking-wider text-primaryText/60">
                       Message (Optional)
                     </label>
                     <textarea
                       id="details-msg"
                       rows={3}
                       {...register("message")}
-                      className="w-full rounded-xl border border-brand-navy/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/50"
+                      className="w-full rounded-xl border border-primaryText/15 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/50"
                       placeholder="Any information about interpreter preference..."
                     />
                   </div>
@@ -367,7 +367,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full mt-2 flex items-center justify-center gap-2 rounded-full bg-brand-primary text-white hover:opacity-90 py-3.5 text-sm font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
+                    className="w-full mt-2 flex items-center justify-center gap-2 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover py-3.5 text-sm font-bold shadow-md cursor-pointer transition-all hover:scale-[1.02] focus:outline-none active:scale-[0.98]"
                   >
                     <Send className="h-4 w-4" />
                     <span>Send Request</span>
@@ -377,7 +377,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               )}
 
               {/* Service contact indicators */}
-              <div className="pt-4 border-t border-brand-navy/15 flex flex-col gap-2.5 text-xs font-semibold text-brand-navy/70">
+              <div className="pt-4 border-t border-primaryText/15 flex flex-col gap-2.5 text-xs font-semibold text-primaryText/70">
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-brand-teal" />
                   <span>{service.hours}</span>
@@ -395,8 +395,8 @@ export default function ServicePage({ params }: ServicePageProps) {
             </div>
 
             {/* Related Services */}
-            <div className="rounded-[24px] border border-brand-navy/10 bg-white p-6 shadow-sm flex flex-col gap-4">
-              <h3 className="text-[15px] font-extrabold text-brand-navy">Related Services</h3>
+            <div className="rounded-[24px] border border-primaryText/10 bg-white p-6 shadow-sm flex flex-col gap-4">
+              <h3 className="text-[15px] font-extrabold text-primaryText">Related Services</h3>
               <div className="flex flex-col gap-3">
                 {service.relatedIds.map((relId) => {
                   const relServ = servicesData[relId];
@@ -405,17 +405,17 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <Link 
                       key={relId} 
                       href={`/services/${relId}`}
-                      className="group flex items-center justify-between p-3 rounded-xl border border-brand-navy/5 hover:border-brand-teal bg-brand-blue-light/10 hover:bg-brand-blue-light/20 transition-all focus:outline-none"
+                      className="group flex items-center justify-between p-3 rounded-xl border border-primaryText/5 hover:border-brand-teal bg-brand-blue-light/10 hover:bg-brand-blue-light/20 transition-all focus:outline-none"
                     >
                       <div className="flex flex-col">
-                        <span className="text-xs font-extrabold text-brand-navy group-hover:text-brand-teal transition-colors">
+                        <span className="text-xs font-extrabold text-primaryText group-hover:text-brand-teal transition-colors">
                           {relServ.title}
                         </span>
-                        <span className="text-[10px] text-brand-navy/50 font-medium">
+                        <span className="text-[10px] text-primaryText/50 font-medium">
                           {relServ.delivery} • {relServ.location}
                         </span>
                       </div>
-                      <ChevronRight className="h-4 w-4 text-brand-navy/40 group-hover:text-brand-teal transition-all group-hover:translate-x-0.5" />
+                      <ChevronRight className="h-4 w-4 text-primaryText/40 group-hover:text-brand-teal transition-all group-hover:translate-x-0.5" />
                     </Link>
                   );
                 })}
