@@ -9,9 +9,11 @@ import { ChevronRight, Globe, MapPin, DollarSign } from 'lucide-react';
 import { servicesData } from "@/data/services";
 import { useAccessibility } from "@/context/AccessibilityContext";
 import AnimatePage from "@/components/guided/AnimatePage";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 export default function ServicesIndexPage() {
   const { accessibilityMode } = useAccessibility();
+  const isAuslanMode = accessibilityMode === 'auslan';
   const isEasyRead = accessibilityMode === 'easyRead';
   const services = Object.values(servicesData);
 
@@ -28,6 +30,13 @@ export default function ServicesIndexPage() {
             Browse professional mental health, counseling, and social connection groups supporting the Tasmanian Deaf community.
           </p>
         </div>
+
+        {/* Auslan Interpreter Video Header in Auslan Mode */}
+        {isAuslanMode && (
+          <div className="flex justify-center mb-10">
+            <InterpreterVideo stepKey="services" questionText="Deaf Support Directory" />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => (

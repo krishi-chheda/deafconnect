@@ -8,6 +8,7 @@ import { Mail, Phone, Globe, Send, CheckCircle2, AlertCircle } from 'lucide-reac
 import { useAccessibility } from "@/context/AccessibilityContext";
 import AnimatePage from "@/components/guided/AnimatePage";
 import Button from "@/components/ui/Button";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 // Form validation schema
 const contactSchema = z.object({
@@ -51,6 +52,13 @@ export default function ContactPage() {
                 Reach out to Deaf Connect Tasmania through your preferred communication channel.
               </p>
             </div>
+
+            {/* Auslan Interpreter Video Header in Auslan Mode */}
+            {accessibilityMode === 'auslan' && (
+              <div className="flex justify-center mb-10">
+                <InterpreterVideo stepKey="contact" questionText="Contact Us" />
+              </div>
+            )}
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               

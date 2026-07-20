@@ -27,6 +27,14 @@ export default function Hero() {
   const [captionsEnabled, setCaptionsEnabled] = useState(true);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
 
+  // Auto-activate video in Auslan mode
+  useEffect(() => {
+    if (accessibilityMode === 'auslan') {
+      setIsInlineVideoActive(true);
+      setIsPlaying(true);
+    }
+  }, [accessibilityMode]);
+
   // Simulated video playback timer
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -34,6 +42,9 @@ export default function Hero() {
       interval = setInterval(() => {
         setVideoProgress((prev) => {
           if (prev >= 100) {
+            if (accessibilityMode === 'auslan') {
+              return 0; // loop in Auslan mode
+            }
             setIsPlaying(false);
             setIsInlineVideoActive(false); // Restore illustration
             setHasPlayedOnce(true);
@@ -44,7 +55,7 @@ export default function Hero() {
       }, 200);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, isInlineVideoActive]);
+  }, [isPlaying, isInlineVideoActive, accessibilityMode]);
 
   // Captions timeline mapping based on progress percent
   const getCaptionsText = (progress: number) => {

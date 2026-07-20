@@ -17,14 +17,30 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
   // Dynamic captions based on stepKey
   const getCaptionsText = (key: string) => {
     switch (key) {
+      case 'home':
+        return "[🤟 Auslan] Welcome to Deaf Connect Tasmania. Accessible mental health navigation for Deaf and hard-of-hearing Tasmanians.";
       case 'step1':
         return "[🤟 Auslan] Let's find support that works for you. What has been happening for you lately?";
       case 'step2':
         return "[🤟 Auslan] What kind of support are you looking for? Talk to a specialist, find counselling, or join groups?";
       case 'step3':
         return "[🤟 Auslan] How would you prefer to communicate with the service? Directly in Auslan or with interpreters?";
+      case 'results':
+        return "[🤟 Auslan] Based on your preferences, here are the most suitable support options available for you.";
+      case 'services':
+        return "[🤟 Auslan] Explore our tailored services including counselling, psychology, and peer support for Deaf Tasmanians.";
+      case 'mental-health':
+        return "[🤟 Auslan] Access Tasmanian counselling, psychology clinics, and Auslan-fluent mental health specialists.";
+      case 'crisis':
+        return "[🤟 Auslan] If you are in immediate danger or need urgent help, access direct 24/7 crisis numbers and NRS emergency relay.";
+      case 'community':
+        return "[🤟 Auslan] Connect with local Tasmanian Deaf organisations, social meetups, sports clubs, and peer groups.";
+      case 'contact':
+        return "[🤟 Auslan] Get in touch with Deaf Connect Tasmania via SMS, email, or National Relay Service.";
+      case 'about':
+        return "[🤟 Auslan] Learn about Deaf Connect Tasmania, our purpose, disclaimers, and the Monash Innovation Guarantee.";
       default:
-        return "[🤟 Auslan] Support recommendations are loaded below.";
+        return "[🤟 Auslan] Support information and guidance is provided below.";
     }
   };
 

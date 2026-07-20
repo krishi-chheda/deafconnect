@@ -8,6 +8,7 @@ import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
 import Button from "@/components/ui/Button";
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 interface Hospital {
   name: string;
@@ -123,6 +124,13 @@ export default function CrisisSupportPage() {
                 />
               </div>
             </Card>
+
+            {/* Auslan Interpreter Video Header in Auslan Mode */}
+            {accessibilityMode === 'auslan' && (
+              <div className="flex justify-center mb-12">
+                <InterpreterVideo stepKey="crisis" questionText="Urgent & Crisis Support" />
+              </div>
+            )}
 
             {/* NRS Instructions Card */}
             <Card variant="outlined" className="p-6 mb-12 flex flex-col md:flex-row items-center gap-6">

@@ -16,10 +16,12 @@ import RecommendationCard from "@/components/guided/RecommendationCard";
 import AnimatePage from "@/components/guided/AnimatePage";
 import EmergencyBanner from "@/components/ui/EmergencyBanner";
 import Button from "@/components/ui/Button";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 export default function ResultsPage() {
   const router = useRouter();
   const { accessibilityMode } = useAccessibility();
+  const isAuslanMode = accessibilityMode === 'auslan';
   const { situation, goal, commMethods, resetFlow } = useSupportFlow();
 
   // Booking Modal States
@@ -140,6 +142,13 @@ export default function ResultsPage() {
             Restart support flow
           </button>
         </div>
+
+        {/* Auslan Interpreter Video Header in Auslan Mode */}
+        {isAuslanMode && (
+          <div className="flex justify-center mb-6">
+            <InterpreterVideo stepKey="results" questionText={activeData.results.title} />
+          </div>
+        )}
 
         {/* Recommendations Grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

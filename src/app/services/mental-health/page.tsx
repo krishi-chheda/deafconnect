@@ -8,6 +8,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
 import EmergencyBanner from "@/components/ui/EmergencyBanner";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 interface Clinic {
   id: string;
@@ -183,6 +184,13 @@ export default function MentalHealthSupportPage() {
                 />
               </div>
             </div>
+
+            {/* Auslan Interpreter Video Header in Auslan Mode */}
+            {accessibilityMode === 'auslan' && (
+              <div className="flex justify-center mb-12">
+                <InterpreterVideo stepKey="mental-health" questionText="Deaf Mental Health Support" />
+              </div>
+            )}
 
             {/* Quick Emergency Banner */}
             <EmergencyBanner className="mb-12" />

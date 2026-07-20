@@ -4,6 +4,7 @@ import React from 'react';
 import { useAccessibility } from "@/context/AccessibilityContext";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { Info, HelpCircle } from 'lucide-react';
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 export default function AboutPage() {
   const { accessibilityMode } = useAccessibility();
@@ -23,6 +24,13 @@ export default function AboutPage() {
             An accessible navigation platform helping Deaf Tasmanians find suitable mental health support.
           </p>
         </div>
+
+        {/* Auslan Interpreter Video Header in Auslan Mode */}
+        {accessibilityMode === 'auslan' && (
+          <div className="flex justify-center mb-10">
+            <InterpreterVideo stepKey="about" questionText="About Deaf Connect Tasmania" />
+          </div>
+        )}
 
         {/* Disclaimer Callout Box */}
         <div className="rounded-[20px] bg-brand-coral/5 border-[2px] border-brand-coral/20 p-6 flex gap-4 items-start mb-10">

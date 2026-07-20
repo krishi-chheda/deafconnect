@@ -9,6 +9,7 @@ import * as z from 'zod';
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatePage from "@/components/guided/AnimatePage";
 import { useAccessibility } from "@/context/AccessibilityContext";
+import InterpreterVideo from "@/components/guided/InterpreterVideo";
 
 const volunteerSchema = z.object({
   fullName: z.string().min(2, 'Please enter your name'),
@@ -145,6 +146,13 @@ export default function CommunityPage() {
                 />
               </div>
             </div>
+
+            {/* Auslan Interpreter Video Header in Auslan Mode */}
+            {accessibilityMode === 'auslan' && (
+              <div className="flex justify-center mb-12">
+                <InterpreterVideo stepKey="community" questionText="Community Connection" />
+              </div>
+            )}
 
             {/* Main Interactive Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
