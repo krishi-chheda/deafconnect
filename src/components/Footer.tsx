@@ -57,10 +57,9 @@ export default function Footer() {
               aria-label="Deaf Tasmania Home"
             >
               {!isPlainLanguage && <HandSignIcon />}
-              <div className="flex flex-col leading-none">
-                <span className="text-lg font-bold tracking-tight text-primaryText">Deaf</span>
-                <span className="text-[10px] font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
-              </div>
+              <span className="text-lg font-bold tracking-tight text-primaryText whitespace-nowrap">
+                Deaf <span className="text-brand-teal">Tasmania</span>
+              </span>
             </Link>
             <p className="text-xs leading-relaxed text-primaryText/70 font-semibold pr-2">
               Accessible mental health and wellbeing support navigation for Tasmanian Deaf and hard-of-hearing communities.

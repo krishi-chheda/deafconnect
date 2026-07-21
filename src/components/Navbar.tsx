@@ -115,10 +115,9 @@ export default function Navbar() {
             aria-label="Deaf Tasmania Home"
           >
             <HandSignIcon />
-            <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-tight text-primaryText">Deaf</span>
-              <span className="text-xs font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
-            </div>
+            <span className="text-xl font-bold tracking-tight text-primaryText whitespace-nowrap">
+              Deaf <span className="text-brand-teal">Tasmania</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
