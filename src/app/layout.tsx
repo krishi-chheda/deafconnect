@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -37,6 +38,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </AccessibilityProvider>
+        <Analytics />
       </body>
     </html>
   );
