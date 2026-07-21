@@ -201,10 +201,10 @@ export const auslanData: TranslationSchema = {
       },
       {
         id: "groups",
-        title: "Deaf Connect Groups",
+        title: "Deaf Tasmania Groups",
         description: "Peer support groups and community events for Deaf people.",
         imageSrc: "/illustrations/service_community.png",
-        imageAlt: "Drawing of happy gesturing community members representing Deaf Connect Groups",
+        imageAlt: "Drawing of happy gesturing community members representing Deaf Tasmania Groups",
         communication: ["auslan", "interpreter"],
         delivery: "In person",
         location: "Tasmania",

@@ -18,7 +18,7 @@ export default function AboutPage() {
         <div className="text-center md:text-left mb-10 border-b border-primaryText/10 pb-6">
           <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Project Background</span>
           <h1 className="text-3xl font-extrabold tracking-tight text-primaryText sm:text-4xl mt-1">
-            About Deaf Connect Tasmania
+            About Deaf Tasmania
           </h1>
           <p className="text-sm font-semibold text-primaryText/60 leading-relaxed mt-2">
             An accessible navigation platform helping Deaf Tasmanians find suitable mental health support.
@@ -28,7 +28,7 @@ export default function AboutPage() {
         {/* Auslan Interpreter Video Header in Auslan Mode */}
         {accessibilityMode === 'auslan' && (
           <div className="flex justify-center mb-10">
-            <InterpreterVideo stepKey="about" questionText="About Deaf Connect Tasmania" />
+            <InterpreterVideo stepKey="about" questionText="About Deaf Tasmania" />
           </div>
         )}
 

@@ -69,10 +69,10 @@ export const servicesData: Record<string, ServiceDetails> = {
   },
   groups: {
     id: "groups",
-    title: "Deaf Connect Groups",
+    title: "Deaf Tasmania Groups",
     tagline: "Meet other Deaf people at peer support sessions.",
     description: "Peer support groups and community events for Deaf people.",
-    longDescription: "Deaf Connect Groups are peer-led social gatherings, peer counseling circles, and community meetups held across Tasmania. These groups are run by Deaf community leaders and offer Tasmanians a chance to meet peers, share advice on NDIS navigation, participate in Auslan sign workshops, and reduce social isolation in a friendly, informal environment.",
+    longDescription: "Deaf Tasmania Groups are peer-led social gatherings, peer counseling circles, and community meetups held across Tasmania. These groups are run by Deaf community leaders and offer Tasmanians a chance to meet peers, share advice on NDIS navigation, participate in Auslan sign workshops, and reduce social isolation in a friendly, informal environment.",
     imageSrc: "/illustrations/service_community.png",
     imageAlt: "Three community members talking",
     communication: ["auslan", "interpreter"],

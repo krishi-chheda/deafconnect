@@ -11,10 +11,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Deaf Connect Tasmania | Accessible Support Services",
+  title: "Deaf Tasmania | Accessible Support Services",
   description: "Accessible mental health support, professional counseling, and community connection hubs for Deaf and hard-of-hearing Tasmanians. Custom layouts in Auslan, Easy Read, and Plain Language.",
   keywords: ["Deaf", "Tasmania", "Auslan", "Mental Health", "Support Services", "NDIS", "Counseling"],
-  authors: [{ name: "Deaf Connect Tasmania" }],
+  authors: [{ name: "Deaf Tasmania" }],
 };
 
 export const viewport: Viewport = {

@@ -60,7 +60,7 @@ export default function Hero() {
   // Captions timeline mapping based on progress percent
   const getCaptionsText = (progress: number) => {
     if (progress < 2) return "";
-    if (progress < 25) return "Hello and welcome to Deaf Connect Tasmania! [🤟 Auslan signing]";
+    if (progress < 25) return "Hello and welcome to Deaf Tasmania! [🤟 Auslan signing]";
     if (progress < 50) return "We support your mental health and link you with community activities.";
     if (progress < 75) return "Select 'My Preferences' above to customize your text size and styling.";
     if (progress < 98) return "We are here to help. Reach out to us through any of our channels.";

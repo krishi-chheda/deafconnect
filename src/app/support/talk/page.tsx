@@ -40,7 +40,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
       desc: "Connects you with an Auslan interpreter online who speaks to the receiver on your behalf."
     },
     {
-      name: "Deaf Connect Tasmania Auslan Registry",
+      name: "Deaf Tasmania Auslan Registry",
       channel: "Auslan Interpreting",
       phone: "1300 773 777",
       email: "interpreting@deafconnect.org.au",
@@ -50,7 +50,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
   ],
   chat: [
     {
-      name: "Deaf Connect Support Services",
+      name: "Deaf Tasmania Support Services",
       channel: "Live Chat & Contact",
       url: "https://deafconnect.org.au",
       desc: "Local, peer-supported counseling and contact services for Deaf Tasmanians."
@@ -78,7 +78,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
   ],
   email: [
     {
-      name: "Deaf Connect Tasmania Support Desk",
+      name: "Deaf Tasmania Support Desk",
       channel: "Email Support",
       email: "support@deafconnecttas.org",
       desc: "Direct support coordinate queries and advice. Responds within 24 hours."
@@ -94,7 +94,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
   ],
   inperson: [
     {
-      name: "Hobart Community Hub (Deaf Connect)",
+      name: "Hobart Community Hub (Deaf Tasmania)",
       channel: "In-Person Consultation",
       phone: "03 6211 4321",
       desc: "Visit our physical offices at 152 Macquarie St, Hobart. Wheelchair and interpreter accessible."
@@ -362,7 +362,7 @@ export default function TalkToSomeonePage() {
                             <div className="flex flex-col gap-1.5">
                               <h3 className="text-xl font-extrabold text-primaryText">Request Received!</h3>
                               <p className="text-xs text-primaryText/60 font-semibold max-w-[340px] leading-relaxed">
-                                Thank you. A Deaf Connect support officer will reach out to you using your preferred channel within 24 hours.
+                                Thank you. A Deaf Tasmania support officer will reach out to you using your preferred channel within 24 hours.
                               </p>
                             </div>
                               <button

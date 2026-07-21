@@ -18,7 +18,7 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
   const getCaptionsText = (key: string) => {
     switch (key) {
       case 'home':
-        return "[🤟 Auslan] Welcome to Deaf Connect Tasmania. Accessible mental health navigation for Deaf and hard-of-hearing Tasmanians.";
+        return "[🤟 Auslan] Welcome to Deaf Tasmania. Accessible mental health navigation for Deaf and hard-of-hearing Tasmanians.";
       case 'step1':
         return "[🤟 Auslan] Let's find support that works for you. What has been happening for you lately?";
       case 'step2':
@@ -36,9 +36,9 @@ export default function InterpreterVideo({ stepKey, questionText }: InterpreterV
       case 'community':
         return "[🤟 Auslan] Connect with local Tasmanian Deaf organisations, social meetups, sports clubs, and peer groups.";
       case 'contact':
-        return "[🤟 Auslan] Get in touch with Deaf Connect Tasmania via SMS, email, or National Relay Service.";
+        return "[🤟 Auslan] Get in touch with Deaf Tasmania via SMS, email, or National Relay Service.";
       case 'about':
-        return "[🤟 Auslan] Learn about Deaf Connect Tasmania, our purpose, disclaimers, and the Monash Innovation Guarantee.";
+        return "[🤟 Auslan] Learn about Deaf Tasmania, our purpose, disclaimers, and the Monash Innovation Guarantee.";
       default:
         return "[🤟 Auslan] Support information and guidance is provided below.";
     }

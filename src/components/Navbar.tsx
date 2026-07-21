@@ -112,11 +112,11 @@ export default function Navbar() {
           <Link 
             href="/" 
             className="flex items-center gap-3 focus:outline-none"
-            aria-label="Deaf Connect Tasmania Home"
+            aria-label="Deaf Tasmania Home"
           >
             <HandSignIcon />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-tight text-primaryText">Deaf Connect</span>
+              <span className="text-xl font-bold tracking-tight text-primaryText">Deaf</span>
               <span className="text-xs font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
             </div>
           </Link>

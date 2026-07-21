@@ -49,7 +49,7 @@ export default function ContactPage() {
                 Contact Us
               </h1>
               <p className="text-sm font-semibold text-primaryText/60 leading-relaxed mt-2">
-                Reach out to Deaf Connect Tasmania through your preferred communication channel.
+                Reach out to Deaf Tasmania through your preferred communication channel.
               </p>
             </div>
 

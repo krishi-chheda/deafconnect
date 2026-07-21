@@ -54,11 +54,11 @@ export default function Footer() {
             <Link 
               href="/" 
               className="flex items-center gap-2 focus:outline-none"
-              aria-label="Deaf Connect Tasmania Home"
+              aria-label="Deaf Tasmania Home"
             >
               {!isPlainLanguage && <HandSignIcon />}
               <div className="flex flex-col leading-none">
-                <span className="text-lg font-bold tracking-tight text-primaryText">Deaf Connect</span>
+                <span className="text-lg font-bold tracking-tight text-primaryText">Deaf</span>
                 <span className="text-[10px] font-semibold tracking-wider text-brand-teal uppercase">Tasmania</span>
               </div>
             </Link>
@@ -170,7 +170,7 @@ export default function Footer() {
         {/* Bottom footer row */}
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-primaryText/55">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
-            <span>© {new Date().getFullYear()} Deaf Connect Tasmania. Portfolio Prototype.</span>
+            <span>© {new Date().getFullYear()} Deaf Tasmania. Portfolio Prototype.</span>
             <a href="#accessibility-policy" className="hover:text-brand-coral transition-colors focus:outline-none">Accessibility Policy</a>
             <a href="#privacy" className="hover:text-brand-coral transition-colors focus:outline-none">Privacy Policy</a>
           </div>
