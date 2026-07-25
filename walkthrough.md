@@ -1,6 +1,6 @@
 # Walkthrough - UI Refinements & Feature Clean-up
 
-We have successfully applied all requested refinements to improve the visual polish, column alignment, media controls, and overall simplicity of the Deaf Connect Tasmania platform.
+We have successfully applied all requested refinements to improve the visual polish, column alignment, media controls, and overall simplicity of the Deaf Tasmania platform.
 
 ---
 

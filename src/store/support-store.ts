@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface SupportFlowState {
   situation: string | null;
@@ -10,12 +11,20 @@ interface SupportFlowState {
   resetFlow: () => void;
 }
 
-export const useSupportStore = create<SupportFlowState>((set) => ({
-  situation: null,
-  goal: null,
-  commMethods: [],
-  setSituation: (val) => set({ situation: val }),
-  setGoal: (val) => set({ goal: val }),
-  setCommMethods: (val) => set({ commMethods: val }),
-  resetFlow: () => set({ situation: null, goal: null, commMethods: [] }),
-}));
+export const useSupportStore = create<SupportFlowState>()(
+  persist(
+    (set) => ({
+      situation: null,
+      goal: null,
+      commMethods: [],
+      setSituation: (val) => set({ situation: val }),
+      setGoal: (val) => set({ goal: val }),
+      setCommMethods: (val) => set({ commMethods: val }),
+      resetFlow: () => set({ situation: null, goal: null, commMethods: [] }),
+    }),
+    {
+      name: 'dct-support-flow-storage',
+    }
+  )
+);
+

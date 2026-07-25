@@ -74,7 +74,7 @@ const CLINICS: Clinic[] = [
     region: 'statewide',
     phone: '1800 55 1800',
     sms: '0477 13 11 14',
-    email: 'youth@tasdeafconnect.org.au',
+    email: 'youth@deaftasmania.org',
     auslan: true,
     ndis: false,
     telehealth: true,
@@ -107,6 +107,8 @@ export default function MentalHealthSupportPage() {
   const [filterAuslan, setFilterAuslan] = useState(false);
   const [filterNdis, setFilterNdis] = useState(false);
   const [filterTelehealth, setFilterTelehealth] = useState(false);
+  const [bookedClinicId, setBookedClinicId] = useState<string | null>(null);
+  const [downloadSuccessMsg, setDownloadSuccessMsg] = useState<string | null>(null);
 
   // FAQ Accordion states
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -447,8 +449,15 @@ export default function MentalHealthSupportPage() {
                             </a>
                           </div>
 
-                          <button className="h-9 px-4 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-bold transition-colors">
-                            Book Session
+                          <button 
+                            onClick={() => {
+                              setBookedClinicId(clinic.id);
+                              setTimeout(() => setBookedClinicId(null), 4000);
+                            }}
+                            className="h-9 px-4 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-bold transition-all cursor-pointer focus:outline-none"
+                            aria-label={`Book session with ${clinic.name}`}
+                          >
+                            {bookedClinicId === clinic.id ? "✓ Session Requested" : "Book Session"}
                           </button>
                         </div>
 
@@ -522,20 +531,34 @@ export default function MentalHealthSupportPage() {
                 </p>
               </div>
 
+              {downloadSuccessMsg && (
+                <div className="rounded-xl bg-brand-teal/15 border border-brand-teal/30 p-3 text-xs font-bold text-brand-teal animate-in fade-in">
+                  {downloadSuccessMsg}
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-4 justify-center w-full">
-                <a 
-                  href="#download-easy-read"
-                  className="h-12 px-6 flex items-center gap-2 rounded-full border-2 border-brand-teal/25 bg-white hover:border-brand-teal text-xs font-extrabold text-brand-teal transition-all"
+                <button 
+                  onClick={() => {
+                    setDownloadSuccessMsg("Easy Read Guide (PDF) download initiated!");
+                    setTimeout(() => setDownloadSuccessMsg(null), 4000);
+                  }}
+                  className="h-12 px-6 flex items-center gap-2 rounded-full border-2 border-brand-teal/25 bg-white hover:border-brand-teal text-xs font-extrabold text-brand-teal transition-all cursor-pointer focus:outline-none"
+                  aria-label="Download Easy Read Guide PDF"
                 >
                   <FileText className="h-4.5 w-4.5 text-brand-teal" />
                   <span>Download Easy Read Guide (PDF)</span>
-                </a>
-                <a 
-                  href="#download-auslan"
-                  className="h-12 px-6 flex items-center gap-2 rounded-full border-2 border-brand-coral/25 bg-white hover:border-brand-coral text-xs font-extrabold text-brand-coral transition-all"
+                </button>
+                <button 
+                  onClick={() => {
+                    setDownloadSuccessMsg("Auslan Video Guide link opened!");
+                    setTimeout(() => setDownloadSuccessMsg(null), 4000);
+                  }}
+                  className="h-12 px-6 flex items-center gap-2 rounded-full border-2 border-brand-coral/25 bg-white hover:border-brand-coral text-xs font-extrabold text-brand-coral transition-all cursor-pointer focus:outline-none"
+                  aria-label="Access Auslan Video Guide"
                 >
                   <span>🤟 Auslan Video Guide (Link)</span>
-                </a>
+                </button>
               </div>
             </div>
 

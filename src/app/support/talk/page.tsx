@@ -80,7 +80,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
     {
       name: "Deaf Tasmania Support Desk",
       channel: "Email Support",
-      email: "support@deafconnecttas.org",
+      email: "support@deaftasmania.org",
       desc: "Direct support coordinate queries and advice. Responds within 24 hours."
     }
   ],
@@ -88,7 +88,7 @@ const ORGANISATIONS: Record<CommMethod, Organisation[]> = {
     {
       name: "Tasmanian Deaf-Aware Telehealth",
       channel: "Video Consultation",
-      email: "telehealth@deafconnecttas.org",
+      email: "telehealth@deaftasmania.org",
       desc: "Join a video chat session directly with a sign-relay therapist."
     }
   ],
@@ -296,12 +296,14 @@ export default function TalkToSomeonePage() {
                                 type="text"
                                 placeholder="Enter your name"
                                 {...register('name')}
+                                aria-invalid={errors.name ? "true" : "false"}
+                                aria-describedby={errors.name ? "talk-name-error" : undefined}
                                 className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors ${
                                   errors.name ? 'border-red-500' : 'border-primaryText/10'
                                 }`}
                               />
                               {errors.name && (
-                                <span className="text-[10px] font-bold text-red-500">{errors.name.message}</span>
+                                <span id="talk-name-error" role="alert" className="text-[10px] font-bold text-red-500">{errors.name.message}</span>
                               )}
                             </div>
 
@@ -315,12 +317,14 @@ export default function TalkToSomeonePage() {
                                 type="text"
                                 placeholder="Enter SMS, mobile number or email address"
                                 {...register('contactDetail')}
+                                aria-invalid={errors.contactDetail ? "true" : "false"}
+                                aria-describedby={errors.contactDetail ? "talk-contact-error" : undefined}
                                 className={`w-full h-11 px-4 rounded-lg border bg-white text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none transition-colors ${
                                   errors.contactDetail ? 'border-red-500' : 'border-primaryText/10'
                                 }`}
                               />
                               {errors.contactDetail && (
-                                <span className="text-[10px] font-bold text-red-500">{errors.contactDetail.message}</span>
+                                <span id="talk-contact-error" role="alert" className="text-[10px] font-bold text-red-500">{errors.contactDetail.message}</span>
                               )}
                             </div>
 

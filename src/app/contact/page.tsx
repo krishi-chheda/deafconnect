@@ -190,7 +190,7 @@ export default function ContactPage() {
                     </p>
                     <p className="flex flex-col gap-0.5">
                       <span className="text-[10px] font-extrabold text-primaryText/40 uppercase">Email Inbox</span>
-                      <a href="mailto:support@deafconnecttas.org" className="text-sm font-bold hover:text-brand-teal transition-colors">support@deafconnecttas.org</a>
+                      <a href="mailto:support@deaftasmania.org" className="text-sm font-bold hover:text-brand-teal transition-colors">support@deaftasmania.org</a>
                     </p>
                     <p className="flex flex-col gap-0.5">
                       <span className="text-[10px] font-extrabold text-primaryText/40 uppercase">Operating Hours</span>

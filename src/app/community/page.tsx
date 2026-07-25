@@ -91,6 +91,7 @@ export default function CommunityPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [volunteerSubmitted, setVolunteerSubmitted] = useState(false);
+  const [eventRegisterSuccess, setEventRegisterSuccess] = useState<string | null>(null);
 
   // Form setup
   const {
@@ -211,11 +212,13 @@ export default function CommunityPage() {
                           type="text"
                           placeholder="Your Name"
                           {...register('fullName')}
+                          aria-invalid={errors.fullName ? "true" : "false"}
+                          aria-describedby={errors.fullName ? "fullName-error" : undefined}
                           className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none bg-white ${
                             errors.fullName ? 'border-red-500' : 'border-primaryText/10'
                           }`}
                         />
-                        {errors.fullName && <span className="text-[10px] text-red-500">{errors.fullName.message}</span>}
+                        {errors.fullName && <span id="fullName-error" role="alert" className="text-[10px] text-red-500">{errors.fullName.message}</span>}
                       </div>
 
                       {/* Email */}
@@ -226,11 +229,13 @@ export default function CommunityPage() {
                           type="email"
                           placeholder="name@example.com"
                           {...register('emailAddress')}
+                          aria-invalid={errors.emailAddress ? "true" : "false"}
+                          aria-describedby={errors.emailAddress ? "emailAddress-error" : undefined}
                           className={`w-full h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal focus:outline-none bg-white ${
                             errors.emailAddress ? 'border-red-500' : 'border-primaryText/10'
                           }`}
                         />
-                        {errors.emailAddress && <span className="text-[10px] text-red-500">{errors.emailAddress.message}</span>}
+                        {errors.emailAddress && <span id="emailAddress-error" role="alert" className="text-[10px] text-red-500">{errors.emailAddress.message}</span>}
                       </div>
 
                       {/* Skill Level Selection */}
@@ -239,6 +244,8 @@ export default function CommunityPage() {
                         <select
                           id="auslanSkill"
                           {...register('auslanSkill')}
+                          aria-invalid={errors.auslanSkill ? "true" : "false"}
+                          aria-describedby={errors.auslanSkill ? "auslanSkill-error" : undefined}
                           className={`h-10 px-3 rounded-lg border text-xs font-bold text-primaryText focus:border-brand-teal bg-white ${
                             errors.auslanSkill ? 'border-red-500' : 'border-primaryText/10'
                           }`}
@@ -248,7 +255,7 @@ export default function CommunityPage() {
                           <option value="basic">Basic Auslan (Level 1/2)</option>
                           <option value="fluent">Fluent Signer / Native</option>
                         </select>
-                        {errors.auslanSkill && <span className="text-[10px] text-red-500">{errors.auslanSkill.message}</span>}
+                        {errors.auslanSkill && <span id="auslanSkill-error" role="alert" className="text-[10px] text-red-500">{errors.auslanSkill.message}</span>}
                       </div>
 
                       {/* Submit */}
@@ -347,8 +354,15 @@ export default function CommunityPage() {
 
                         {/* Register Action button */}
                         <div className="flex justify-end mt-2">
-                          <button className="h-9 px-4 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-bold transition-colors">
-                            Register Interest
+                          <button 
+                            onClick={() => {
+                              setEventRegisterSuccess(ev.title);
+                              setTimeout(() => setEventRegisterSuccess(null), 4000);
+                            }}
+                            className="h-9 px-4 rounded-full bg-brand-coral text-white hover:bg-brand-coral-hover text-xs font-bold transition-all cursor-pointer focus:outline-none"
+                            aria-label={`Register interest for ${ev.title}`}
+                          >
+                            {eventRegisterSuccess === ev.title ? "✓ Interest Registered!" : "Register Interest"}
                           </button>
                         </div>
 

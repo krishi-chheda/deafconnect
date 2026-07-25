@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { useAccessibility, TextSize, ContrastMode, MotionPreference, AccessibilityMode } from '@/context/AccessibilityContext';
+import AuslanLogoIcon from '@/components/ui/AuslanLogoIcon';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -48,52 +49,7 @@ export default function Navbar() {
     return false;
   };
 
-  // Custom hand sign SVG icon for the logo
-  const HandSignIcon = () => (
-    <svg 
-      width="32" 
-      height="32" 
-      viewBox="0 0 32 32" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-brand-coral shrink-0"
-      aria-hidden="true"
-    >
-      <path 
-        d="M10 24V14C10 12.8954 9.10457 12 8 12C6.89543 12 6 12.8954 6 14V24C6 26.2091 7.79086 28 10 28H15C18.3137 28 21 25.3137 21 22V17C21 15.8954 20.1046 15 19 15C17.8954 15 17 15.8954 17 17V21M17 21C17 21 16.5 18 15 18C13.5 18 13 19 13 21" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round" 
-        strokeLinejoin="round"
-      />
-      {/* OK Loop */}
-      <circle 
-        cx="21.5" 
-        cy="9.5" 
-        r="4.5" 
-        stroke="currentColor" 
-        strokeWidth="2.5"
-      />
-      <path 
-        d="M26 9.5C26 7.5 28 6 28 6" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round"
-      />
-      <path 
-        d="M19 6C18 4.5 16 3 16 3" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round"
-      />
-      <path 
-        d="M22 4V2" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round"
-      />
-    </svg>
-  );
+
 
   return (
     <>
@@ -114,7 +70,7 @@ export default function Navbar() {
             className="flex items-center gap-3 focus:outline-none"
             aria-label="Deaf Tasmania Home"
           >
-            <HandSignIcon />
+            <AuslanLogoIcon size={32} />
             <span className="text-xl font-bold tracking-tight text-primaryText whitespace-nowrap">
               Deaf <span className="text-brand-teal">Tasmania</span>
             </span>

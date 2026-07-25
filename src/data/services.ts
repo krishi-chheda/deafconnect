@@ -38,7 +38,7 @@ export const servicesData: Record<string, ServiceDetails> = {
       "Option to bring external interpreters",
       "Full video relay and chat capability"
     ],
-    contactEmail: "counselling@deafconnecttas.org",
+    contactEmail: "counselling@deaftasmania.org",
     contactSMS: "0477 13 11 14",
     hours: "Monday - Friday, 9:00 AM - 5:00 PM",
     relatedIds: ["clearmind", "groups"]
@@ -86,7 +86,7 @@ export const servicesData: Record<string, ServiceDetails> = {
       "Family and carers welcome to attend",
       "Social outings and outdoor events"
     ],
-    contactEmail: "groups@deafconnecttas.org",
+    contactEmail: "groups@deaftasmania.org",
     contactSMS: "0499 987 654",
     hours: "Saturdays, 10:00 AM - 2:00 PM (Weekly)",
     relatedIds: ["counselling", "clearmind"]

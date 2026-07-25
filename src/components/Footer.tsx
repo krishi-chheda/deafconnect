@@ -4,43 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 
 import { useAccessibility } from '@/context/AccessibilityContext';
+import AuslanLogoIcon from '@/components/ui/AuslanLogoIcon';
 
 export default function Footer() {
   const { accessibilityMode } = useAccessibility();
   const isPlainLanguage = accessibilityMode === 'plainLanguage';
   
-  const HandSignIcon = () => (
-    <svg 
-      width="24" 
-      height="24" 
-      viewBox="0 0 32 32" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-brand-coral shrink-0 hide-in-plain-language"
-      aria-hidden="true"
-    >
-      <path 
-        d="M10 24V14C10 12.8954 9.10457 12 8 12C6.89543 12 6 12.8954 6 14V24C6 26.2091 7.79086 28 10 28H15C18.3137 28 21 25.3137 21 22V17C21 15.8954 20.1046 15 19 15C17.8954 15 17 15.8954 17 17V21M17 21C17 21 16.5 18 15 18C13.5 18 13 19 13 21" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round" 
-        strokeLinejoin="round"
-      />
-      <circle 
-        cx="21.5" 
-        cy="9.5" 
-        r="4.5" 
-        stroke="currentColor" 
-        strokeWidth="2.5"
-      />
-      <path 
-        d="M26 9.5C26 7.5 28 6 28 6" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round"
-      />
-    </svg>
-  );
+
 
   return (
     <footer className="bg-brand-footer-bg text-primaryText mt-10 border-t border-primaryText/10 relative z-10 animate-in" aria-label="Footer Navigation">
@@ -56,7 +26,7 @@ export default function Footer() {
               className="flex items-center gap-2 focus:outline-none"
               aria-label="Deaf Tasmania Home"
             >
-              {!isPlainLanguage && <HandSignIcon />}
+              {!isPlainLanguage && <AuslanLogoIcon size={24} className="text-brand-coral shrink-0 hide-in-plain-language" />}
               <span className="text-lg font-bold tracking-tight text-primaryText whitespace-nowrap">
                 Deaf <span className="text-brand-teal">Tasmania</span>
               </span>
@@ -93,7 +63,7 @@ export default function Footer() {
               </p>
               <p className="flex flex-col">
                 <span className="text-[9px] font-extrabold text-primaryText/40 uppercase tracking-wider">Email Inquiry</span>
-                <a href="mailto:support@deafconnecttas.org" className="hover:text-brand-coral font-bold text-primaryText mt-0.5">support@deafconnecttas.org</a>
+                <a href="mailto:support@deaftasmania.org" className="hover:text-brand-coral font-bold text-primaryText mt-0.5">support@deaftasmania.org</a>
               </p>
               <p className="flex flex-col">
                 <span className="text-[9px] font-extrabold text-primaryText/40 uppercase tracking-wider">Relay Service</span>
@@ -170,8 +140,8 @@ export default function Footer() {
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-primaryText/55">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
             <span>© {new Date().getFullYear()} Deaf Tasmania. Portfolio Prototype.</span>
-            <a href="#accessibility-policy" className="hover:text-brand-coral transition-colors focus:outline-none">Accessibility Policy</a>
-            <a href="#privacy" className="hover:text-brand-coral transition-colors focus:outline-none">Privacy Policy</a>
+            <Link href="/about" className="hover:text-brand-coral transition-colors focus:outline-none">Accessibility Policy</Link>
+            <Link href="/about" className="hover:text-brand-coral transition-colors focus:outline-none">Privacy Policy</Link>
           </div>
 
           <div className="flex items-center gap-2 rounded-md border border-brand-teal/20 bg-brand-teal/5 px-2.5 py-1">
